@@ -1,9 +1,19 @@
-#ifndef LISTA_DE_PLAYLISTS_H_
-#define LISTA_DE_PLAYLISTS_H_
+#ifndef LISTA_PLAYLIST_H_
+#define LISTA_PLAYLIST_H_
 
 typedef struct celPlaylist CelPlaylist;
 typedef struct lista_playlist Lista_playlist;
 
+/**
+ * @brief Cria uma lista de playlists vazia.
+ * @return Ponteiro para a lista de playlists.
+ **/
+Lista_playlist* criaListaPlaylist();
 
+/**
+ * @brief Libera da memória uma lista de playlists.
+ * @param songs Lista de playlists que será liberada.
+ **/
+void destroiListaPlaylist(Lista_playlist* songs);
 
-#endif /*LISTA_DE_PLAYLISTS_*/
+#endif /*LISTA_DE_PLAYLIST_*/

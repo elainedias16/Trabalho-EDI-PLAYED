@@ -19,3 +19,25 @@ char* get_artista_musica(Musica* musica){
 char* get_genero_musica(Musica* musica){
     return musica->genero;
 }
+
+Musica* criaMusica(char* nome, char* artista, char* genero){
+    Musica* musica = (Musica*) malloc(sizeof(Musica));
+    musica->nome = strdup(nome);
+    musica->artista = strdup(artista);
+    musica->genero = strdup(genero);
+    return musica;
+}
+
+void destroiMusica(Musica* musica){
+    free(musica->nome);
+    free(musica->artista);
+    free(musica->genero);
+    free(musica);
+}
+
+void printMusica(Musica* musica, FILE* f){
+    printf(f, "Nome: %s\n" , musica->nome);
+    fprintf(f, "Artista: %s\n", musica->artista);
+    fprintf(f, "Genero: %s\n", musica->genero);
+}
+

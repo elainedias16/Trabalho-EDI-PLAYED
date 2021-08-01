@@ -24,4 +24,26 @@ char* get_artista_musica(Musica* musica);
  **/
 char* get_genero_musica(Musica* musica);
 
+/** 
+ * @brief Cria uma musica
+ * @param nome É o nome da musica.
+ * @param artista É o artista da musica.
+ * @param genero É o genero da musica.
+ * @return Retorna a musica criada.
+ **/
+Musica* criaMusica(char* nome, char* artista, char* genero);
+
+/**
+ * @brief Libera uma música da memória.
+ * @param musica Música que será liberada.
+ **/
+void destroiMusica(Musica* musica);
+
+/**
+ * @brief Imprime os dados de uma música.
+ * @param musica Música que será impressa.
+ * @param f Ponteiro para o arquivo cuja música será impresso. Para imprimir no terminal, considere f == STDOUT.
+ **/
+void printMusica(Musica* musica, FILE* f);
+
 #endif /*MUSICA_H*/
