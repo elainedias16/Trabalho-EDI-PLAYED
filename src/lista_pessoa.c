@@ -8,7 +8,7 @@ struct celPessoa{
     CelPessoa* next;
 };
 
-struct lista_pessoas{
+struct lista_pessoa{
     CelPessoa* first;
     CelPessoa* last;
 };
