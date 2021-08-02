@@ -1,6 +1,11 @@
 #ifndef LISTA_PLAYLIST_H_
 #define LISTA_PLAYLIST_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "../include/playlist.h"
+//#include "../include/lista_playlist.h"
+
 typedef struct celPlaylist CelPlaylist;
 typedef struct lista_playlist Lista_playlist;
 

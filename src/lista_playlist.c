@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "../include/playlist.h"
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include "../include/playlist.h"
 #include "../include/lista_playlist.h"
 
 struct celPlaylist{
@@ -9,8 +9,8 @@ struct celPlaylist{
 };
 
 struct lista_playlist{
-    Playlist* first;
-    Playlist* last;
+    CelPlaylist* first;
+    CelPlaylist* last;
     int tam;
 };
 

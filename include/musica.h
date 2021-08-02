@@ -1,6 +1,11 @@
 #ifndef MUSICA_H
 #define MUSICA_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//#include "../include/musica.h"
+
 typedef struct musica Musica;
 
 /**

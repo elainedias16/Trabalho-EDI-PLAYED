@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "pessoa.h": "c",
+        "lista_pessoa.h": "c"
+    }
+}

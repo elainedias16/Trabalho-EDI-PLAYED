@@ -1,5 +1,11 @@
-#ifndef PLAYLIST_H
-#define PLAYLIST_H
+#ifndef PLAYLIST_H_
+#define PLAYLIST_H_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "../include/musica.h"
+//#include "../include/playlist.h"
+
 
 typedef struct celMusica CelMusica;
 
@@ -13,10 +19,10 @@ Playlist* criaPlaylist();
 
 /**
  * @brief Insere uma música no final de uma playlist.
- * @param musica Música que será inserida.
  * @param playlist Playlist que terá a música inserida.
+ * @param musica Música que será inserida.
  **/
-void insereMusica(Musica* musica, Playlist* playlist);
+//void insereMusica(Playlist* playlist, Musica* musica);
 
 /**
  * @brief Libera da memória uma lista de músicas. Essa função não libera o conteúdo das celulas.
