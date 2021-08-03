@@ -32,7 +32,7 @@ Lista_playlist* get_lista_playlist_pessoa(Pessoa* pessoa);
 Lista_pessoa* get_lista_amigos_pessoa(Pessoa* pessoa);
 
 /**
- * @brief Cria uma pessoa
+ * @brief Cria uma pessoa.
  * @param nome É o nome da pessoa.
  * @param songs Lista de playlist da pessoa.
  * @param amigos Lista de amigos da pessoa.

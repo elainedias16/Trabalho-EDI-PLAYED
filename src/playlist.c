@@ -58,3 +58,25 @@ void printPlaylist(Playlist* playlist, FILE* f){
         printf("\n");
     }
 }
+
+Playlist* lePlaylist(char* fileName){
+    FILE* f = fopen(fileName, "r");
+    if(f == NULL){
+        printf("Erro na abertura do arquvio!\n");
+        exit(1);
+    }
+    Playlist* playlist = criaPlaylist();
+    //while]
+    //dentro do while chamar leMusica
+
+    fclose(f);
+    return playlist;
+}
+
+Musica* leMusica(char* fileName){
+    // char nome[TAM];
+    // char artista[TAM];
+    // char genero[TAM];
+    // // fscanf(f, );
+    // Musica* musica = criaMusica();
+}
