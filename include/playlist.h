@@ -22,7 +22,7 @@ Playlist* criaPlaylist();
  * @param playlist Playlist que terá a música inserida.
  * @param musica Música que será inserida.
  **/
-//void insereMusica(Playlist* playlist, Musica* musica);
+void insereMusica(Playlist* playlist, Musica* musica);
 
 /**
  * @brief Libera da memória uma lista de músicas. Essa função não libera o conteúdo das celulas.

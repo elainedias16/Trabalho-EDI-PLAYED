@@ -21,4 +21,18 @@ Lista_playlist* criaListaPlaylist();
  **/
 void destroiListaPlaylist(Lista_playlist* songs);
 
+/**
+ * @brief Imprime uma lista de playlists.
+ * @param songs Lista de playlists que será impressa.
+ * @param f Ponteiro para arquivo cuja playlist será impressa. Caso necessário imprimir no terminal, considere f == STDOUT.
+ **/
+void printListaPlaylist(Lista_playlist* songs, FILE* f);
+
+/**
+ * @brief Insere uma playlist numa lista de playlists.
+ * @param songs Lista de playlists que terá uma nova playlist adicionada.
+ * @param playlist Playlist que será inserida.
+ **/
+void inserePlaylist(Lista_playlist* songs, Playlist* playlist);
+
 #endif /*LISTA_DE_PLAYLIST_*/

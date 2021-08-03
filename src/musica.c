@@ -37,7 +37,7 @@ void destroiMusica(Musica* musica){
 }
 
 void printMusica(Musica* musica, FILE* f){
-    printf(f, "Nome: %s\n" , musica->nome);
+    fprintf(f, "Nome: %s\n" , musica->nome);
     fprintf(f, "Artista: %s\n", musica->artista);
     fprintf(f, "Genero: %s\n", musica->genero);
 }

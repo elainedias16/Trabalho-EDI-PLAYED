@@ -22,22 +22,24 @@ Playlist* criaPlaylist(){
     return playlist;
 }
 
-// void insereMusica(Playlist* playlist, Musica* musica){
-//     CelMusica* nova = (CelMusica*)malloc(sizeof(CelMusica));
-//     nova->musica = musica;
-//     nova->next = NULL;
-//     playlist->last->next = nova; // Encadeando na lista.
-//     playlist->last = nova; // Atualizando sentinela last.
+void insereMusica(Playlist* playlist, Musica* musica){
+    CelMusica* nova = (CelMusica*)malloc(sizeof(CelMusica));
+    nova->musica = musica;
+    nova->next = NULL;
+    if(playlist->tam != 0)
+        playlist->last->next = nova; // Encadeando na lista.
+    
+    playlist->last = nova; // Atualizando sentinela last.
 
-//     if(playlist->tam == 0){ // Caso seja a primeira música, atualizar sentinela first.
-//         playlist->first = nova;
-//     }
+    if(playlist->tam == 0){ // Caso seja a primeira música, atualizar sentinela first.
+        playlist->first = nova;
+    }
 
-//     playlist->tam++;
-// }
+    playlist->tam++;
+}
 
 void destroiPlaylist(Playlist* playlist){
-    CelMusica* i;
+    CelMusica* i = playlist->first;
     CelMusica* aux;
     while(i != NULL){
         aux = i;
@@ -49,7 +51,7 @@ void destroiPlaylist(Playlist* playlist){
 }
 
 void printPlaylist(Playlist* playlist, FILE* f){
-    CelMusica* i;
+    CelMusica* i = playlist->first;
     while(i != NULL){
         printMusica(i->musica, f);
         i = i->next;

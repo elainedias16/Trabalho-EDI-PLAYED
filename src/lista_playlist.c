@@ -33,3 +33,29 @@ void destroiListaPlaylist(Lista_playlist* songs){
     }
     free(songs);
 }
+
+void printListaPlaylist(Lista_playlist* songs, FILE* f){
+    CelPlaylist* i = songs->first;
+    while(i != NULL){
+        fprintf(f, "\n-----\n");
+        printPlaylist(i->playlist, f);
+        i = i->next;
+        fprintf(f, "\n-----\n");
+    }
+}
+
+void inserePlaylist(Lista_playlist* songs, Playlist* playlist){
+    CelPlaylist* nova = (CelPlaylist*)malloc(sizeof(CelPlaylist));
+    nova->playlist = playlist;
+    nova->next = NULL;
+
+    if(songs->tam != 0)
+        songs->last->next = nova;
+    
+    songs->last = nova;
+
+    if(songs->tam == 0){
+        songs->first = nova;
+    }
+    songs->tam++;
+}
