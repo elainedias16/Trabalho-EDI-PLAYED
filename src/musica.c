@@ -3,10 +3,12 @@
 // #include <string.h>
 #include "../include/musica.h"
 
+#define TAM 50
+
 struct musica{
     char* nome;
     char* artista;
-    char* genero;
+    //char* genero;
 };
 
 char* get_nome_musica(Musica* musica){
@@ -17,28 +19,36 @@ char* get_artista_musica(Musica* musica){
     return musica->artista;
 }
 
-char* get_genero_musica(Musica* musica){
-    return musica->genero;
-}
+// char* get_genero_musica(Musica* musica){
+//     return musica->genero;
+// }
 
-Musica* criaMusica(char* nome, char* artista, char* genero){
+Musica* criaMusica(char* nome, char* artista){
     Musica* musica = (Musica*) malloc(sizeof(Musica));
     musica->nome = strdup(nome);
     musica->artista = strdup(artista);
-    musica->genero = strdup(genero);
+    //musica->genero = strdup(genero);
     return musica;
 }
 
 void destroiMusica(Musica* musica){
     free(musica->nome);
     free(musica->artista);
-    free(musica->genero);
+    //free(musica->genero);
     free(musica);
 }
 
 void printMusica(Musica* musica, FILE* f){
     fprintf(f, "Nome: %s\n" , musica->nome);
     fprintf(f, "Artista: %s\n", musica->artista);
-    fprintf(f, "Genero: %s\n", musica->genero);
+    //fprintf(f, "Genero: %s\n", musica->genero);
 }
 
+Musica* leMusica(FILE* f){
+    char nome[TAM];
+    char artista[TAM];
+    // char genero[TAM];
+    fscanf(f, "%[^-]- %[^\n]\n", artista , nome);
+    Musica* musica = criaMusica(nome, artista);
+    return musica;
+}

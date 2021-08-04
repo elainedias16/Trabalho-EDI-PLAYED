@@ -27,16 +27,15 @@ char* get_artista_musica(Musica* musica);
  * @param musica Música que terá seu nome pego.
  * @return Ponteiro para nome de um gênero de uma música.
  **/
-char* get_genero_musica(Musica* musica);
+//!char* get_genero_musica(Musica* musica);
 
 /** 
  * @brief Cria uma musica
  * @param nome É o nome da musica.
  * @param artista É o artista da musica.
- * @param genero É o genero da musica.
  * @return Retorna a musica criada.
  **/
-Musica* criaMusica(char* nome, char* artista, char* genero);
+Musica* criaMusica(char* nome, char* artista);
 
 /**
  * @brief Libera uma música da memória.
@@ -50,5 +49,12 @@ void destroiMusica(Musica* musica);
  * @param f Ponteiro para o arquivo cuja música será impresso. Para imprimir no terminal, considere f == STDOUT.
  **/
 void printMusica(Musica* musica, FILE* f);
+
+/**
+ * @brief Faz a leitura das informações de uma música em um .txt e a inicializa.
+ * @param f Ponteiro do arquivo cujos dados serão pegos.
+ * @return Música inicializada.
+ **/
+Musica* leMusica(FILE* f);
 
 #endif /*MUSICA_H*/

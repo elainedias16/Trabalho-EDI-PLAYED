@@ -3,6 +3,8 @@
 // #include "../include/musica.h"
 #include "../include/playlist.h"
 
+#define TAM 50
+
 struct celMusica{
     Musica* musica;
     CelMusica* next;
@@ -44,7 +46,7 @@ void destroiPlaylist(Playlist* playlist){
     while(i != NULL){
         aux = i;
         i = i->next;
-        //! destroiMusica(aux->musica);
+        destroiMusica(aux->musica); //! TALVEZ DE PROBLEMA
         free(aux);
     }
     free(playlist);
@@ -65,18 +67,18 @@ Playlist* lePlaylist(char* fileName){
         printf("Erro na abertura do arquvio!\n");
         exit(1);
     }
+    Musica* aux;
     Playlist* playlist = criaPlaylist();
-    //while]
-    //dentro do while chamar leMusica
+    
+    while(!feof(f)){
+        aux = leMusica(f);
+        insereMusica(playlist, aux);
+
+        if(feof(f)){
+            break;
+        }
+    }
 
     fclose(f);
     return playlist;
-}
-
-Musica* leMusica(char* fileName){
-    // char nome[TAM];
-    // char artista[TAM];
-    // char genero[TAM];
-    // // fscanf(f, );
-    // Musica* musica = criaMusica();
 }

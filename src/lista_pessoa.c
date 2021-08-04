@@ -22,6 +22,18 @@ Lista_pessoa* criaListaPessoa(){
     return lista;
 }
 
+CelPessoa* getFirstCelula(Lista_pessoa* listaPessoa){
+    return listaPessoa->first;
+}
+
+CelPessoa* getNextCelula(CelPessoa* celula){
+    return celula->next;
+}
+
+Pessoa* getPessoaCelula(CelPessoa* celula){
+    return celula->pessoa;
+}
+
 void destroiListaPessoa(Lista_pessoa* listaPessoa){
     CelPessoa* i = listaPessoa->first;
     CelPessoa* aux;
@@ -57,4 +69,16 @@ void inserePessoa(Lista_pessoa* listaPessoa, Pessoa* pessoa){
         listaPessoa->first = nova;
     }
     listaPessoa->tam++;
+}
+
+Pessoa* buscaPessoaNaLista(Lista_pessoa* lista, char* nome){
+    CelPessoa* i;
+    char* nomeAux;
+    for(i= lista->first; i != NULL; i= i->next){
+        nomeAux = get_nome_pessoa(i->pessoa);
+        if(strcmp(nomeAux, nome)== 0){
+            return i->pessoa;
+        }
+    }
+    return NULL;
 }

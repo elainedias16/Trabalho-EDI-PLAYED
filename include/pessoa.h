@@ -34,11 +34,9 @@ Lista_pessoa* get_lista_amigos_pessoa(Pessoa* pessoa);
 /**
  * @brief Cria uma pessoa.
  * @param nome É o nome da pessoa.
- * @param songs Lista de playlist da pessoa.
- * @param amigos Lista de amigos da pessoa.
  * @return Pessoa criada.
 **/
-Pessoa* criaPessoa(char* nome, Lista_playlist* songs, Lista_pessoa* amigos);
+Pessoa* criaPessoa(char* nome);
 
 /**
  * @brief Libera uma pessoa da memória.
@@ -66,5 +64,12 @@ Pessoa* setSongs(Pessoa* pessoa, Lista_playlist* songs);
  * @return Pessoa com o campo amigos atualizado.
  **/
 Pessoa* setAmigos(Pessoa* pessoa, Lista_pessoa* amigos);
+
+/**
+ * @brief Inicializa a lista de usuários do PLAYED com a leitura do arquivo amizades.txt.
+ * @param fileName Caminho para o arquivo.
+ * @return Lista de pessoas com os campos 'nome' e 'amigos' inicializados.
+ **/
+Lista_pessoa* leUsuarios(char* fileName);
 
 #endif /*PESSOA_H*/

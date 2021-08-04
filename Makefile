@@ -1,7 +1,7 @@
 TARGET := tp1
 LIBS := -lm
-#CFLAGS := -g -O3 -Wno-unused-result
-CFLAGS := -g -O3 
+CFLAGS := -g -O3 -Wno-unused-result
+#CFLAGS := -g -O3 
 OBJDIR := obj/
 SRCDIR := src/
 INCLUDEDIR := include/
@@ -35,3 +35,5 @@ clean:
 	-rm -f *.o
 	-rm -f $(TARGET)
 	
+test:
+	./tp1 10 z-inputs/Entrada/acoustic-hits.txt z-inputs/Entrada/eletrica.txt z-inputs/Entrada/eletronica.txt z-inputs/Entrada/heavymetal.txt z-inputs/Entrada/metal.txt z-inputs/Entrada/nacional.txt z-inputs/Entrada/sert.txt z-inputs/Entrada/sertanejo.txt z-inputs/Entrada/playlists.txt z-inputs/Entrada/amizade.txt

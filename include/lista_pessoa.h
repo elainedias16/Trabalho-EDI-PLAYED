@@ -35,4 +35,17 @@ void printListaPessoa(Lista_pessoa* listaPessoa, FILE* f);
  **/
 void inserePessoa(Lista_pessoa* listaPessoa, Pessoa* pessoa);
 
+/**
+ * @brief Busca uma pessoa em uma lista de pessoas.
+ * @param lista Lista de pessoas na qual será feita a busca.
+ * @param nome Nome da pessoa que estamos procurando.
+ **/
+Pessoa* buscaPessoaNaLista(Lista_pessoa* lista, char* nome);
+
+CelPessoa* getFirstCelula(Lista_pessoa* listaPessoa);
+
+CelPessoa* getNextCelula(CelPessoa* celula);
+
+Pessoa* getPessoaCelula(CelPessoa* celula);
+
 #endif /*LISTA_PESSOA_H*/

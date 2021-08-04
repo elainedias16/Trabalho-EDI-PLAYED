@@ -38,4 +38,11 @@ void destroiPlaylist(Playlist* playlist);
  **/
 void printPlaylist(Playlist* playlist, FILE* f);
 
+/**
+ * @brief Lê os dados de todas as músicas de um .txt e cria uma playlist.
+ * @param fileName É o caminho para o arquivo.
+ * @return Ponteiro para uma lista de músicas.
+ **/
+Playlist* lePlaylist(char* fileName);
+
 #endif /*PLAYLIST*/
