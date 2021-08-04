@@ -36,6 +36,7 @@ void destroiListaPlaylist(Lista_playlist* songs){
 
 void printListaPlaylist(Lista_playlist* songs, FILE* f){
     CelPlaylist* i = songs->first;
+    //!printf("[[%p]]", i);
     while(i != NULL){
         fprintf(f, "\n-----\n");
         printPlaylist(i->playlist, f);
@@ -58,4 +59,16 @@ void inserePlaylist(Lista_playlist* songs, Playlist* playlist){
         songs->first = nova;
     }
     songs->tam++;
+}
+
+Playlist* buscaPlaylistNaLista(Lista_playlist* lista, char* nome){
+    CelPlaylist* i;
+    char* nomeAux;
+    for(i = lista->first; i != NULL; i = i->next){
+        nomeAux = get_nome_playlist(i->playlist);
+        if(strcmp(nomeAux, nome) == 0){
+            return i->playlist;
+        }
+    }
+    return NULL;
 }

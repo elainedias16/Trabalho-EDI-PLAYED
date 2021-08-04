@@ -50,6 +50,8 @@ void printPessoa(Pessoa* pessoa, FILE* f){
         fprintf(f, "%s\n", aux->nome);
         i = getNextCelula(i);
     }
+    fprintf(f , "Lista de playlists\n");
+    printListaPlaylist(pessoa->songs, f);
     
     fprintf(f, "---------------\n");
 }
@@ -64,8 +66,8 @@ Pessoa* setAmigos(Pessoa* pessoa, Lista_pessoa* amigos){
     return pessoa;
 }
 
-Lista_pessoa* leUsuarios(char* fileName){
-    FILE* f = fopen(fileName, "r");
+Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists, Lista_playlist* listaPlaylist){
+    FILE* f = fopen(fileNameAmizades, "r");
     if(f == NULL){
         printf("Erro na abertura do arquivo.\n");
         exit(1);
@@ -101,11 +103,50 @@ Lista_pessoa* leUsuarios(char* fileName){
         }  
     }
 
+    inserePlaylistsNasPessoas(listaPessoa, fileNamePlaylists,  listaPlaylist);
+
     fclose(f);
     return listaPessoa;
 }
+
 // Joao;Maria;Pedro;Alice
 // Joao;Maria
 // Joao;Pedro
-// Pedro;Alice
+// Pedro;Alice    PESSOA
+
+// Joao;3;acoustic-hits.txt;nacional.txt;heavymetal.txt
+// Maria;2;sertanejo.txt;metal.txt
+// Pedro;1;eletronica.txt
+// Alice;2;sert.txt;eletrica.txt
+
+void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylists, Lista_playlist* listaPlaylist){
+    FILE *f = fopen(fileNamePlaylists, "r");
+    if(f == NULL){
+        printf("Erro na abertura do arquivo.\n");
+        exit(1);
+    }
+    
+    char nomePessoa[TAM];
+    char nomePlaylist[TAM];
+    int qtd;
+    Pessoa* pessoaAux;
+    Playlist* playlistAux;
+    while(!feof(f)){
+        fscanf(f, "%[^;];%d;", nomePessoa, &qtd);
+        pessoaAux = buscaPessoaNaLista(listaPessoa, nomePessoa); //chama funcao busca pessoa na lista de pessoa
+        if(pessoaAux != NULL){
+            for(int i=0; i < qtd; i++){
+                fscanf(f, "%[^;^\n]%*c", nomePlaylist);
+                playlistAux = buscaPlaylistNaLista(listaPlaylist, nomePlaylist); //chama busca playlist na lista de playlists
+                //printf("[%p]\n", playlistAux);
+                
+                inserePlaylist(pessoaAux->songs, playlistAux); 
+            } 
+        } else{
+            fscanf(f, "%*[^\n]\n"); // Caso dê pessoa NULL, ajustando fscanf pra próxima linha.
+        }
+    }
+    
+    fclose(f);
+}
 

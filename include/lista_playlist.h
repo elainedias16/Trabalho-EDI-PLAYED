@@ -35,4 +35,13 @@ void printListaPlaylist(Lista_playlist* songs, FILE* f);
  **/
 void inserePlaylist(Lista_playlist* songs, Playlist* playlist);
 
+/**
+ * @brief Busca uma playlist numa lista de playlists.
+ * @param lista Lista de playlists.
+ * @param nome Chave de busca.
+ * @return Ponteiro para playlist desejada. Caso a playlist não seja encontrada, retorna NULL. 
+ **/
+Playlist* buscaPlaylistNaLista(Lista_playlist* lista, char* nome);
+
+
 #endif /*LISTA_DE_PLAYLIST_*/

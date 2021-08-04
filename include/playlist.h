@@ -12,10 +12,18 @@ typedef struct celMusica CelMusica;
 typedef struct playlist Playlist;
 
 /**
+ * @brief Captura o nome de uma playlist.
+ * @param playlist Playlist que terá o nome pego.
+ * @return Ponteiro para o nome da playlist.
+ **/
+char* get_nome_playlist(Playlist* playlist);
+
+/**
  * @brief Cria uma playlist vazia.
+ * @param nome É o nome que a playlist terá.
  * @return Ponteiro para a playlist criada.
  **/
-Playlist* criaPlaylist();
+Playlist* criaPlaylist(char* nome);
 
 /**
  * @brief Insere uma música no final de uma playlist.

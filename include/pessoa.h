@@ -66,10 +66,20 @@ Pessoa* setSongs(Pessoa* pessoa, Lista_playlist* songs);
 Pessoa* setAmigos(Pessoa* pessoa, Lista_pessoa* amigos);
 
 /**
- * @brief Inicializa a lista de usuários do PLAYED com a leitura do arquivo amizades.txt.
- * @param fileName Caminho para o arquivo.
- * @return Lista de pessoas com os campos 'nome' e 'amigos' inicializados.
+ * @brief Inicializa a lista de usuários do PLAYED com a leitura do arquivo amizades.txt e playlists.txt.
+ * @param fileNameAmizades Caminho para o arquivo amizades.txt.
+ * @param fileNamePlaylists Caminho para o arquivo playlists.txt.
+ * @param listaPlaylist Lista de todas as playlists do PLAYED.
+ * @return Lista de pessoas com os campos 'nome', 'amigos' e 'songs', inicializados.
  **/
-Lista_pessoa* leUsuarios(char* fileName);
+Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists, Lista_playlist* listaPlaylist);
+
+/**
+ * @brief Coloca as playlists da pessoa no campo songs (onde é armazenado a lista de de playlists da pessoa)
+ * @param listaPessoa Lista de pessoas do PLAYED.
+ * @param fileNamePlaylists Caminho para o arquivo playlists.txt.
+ * @param listaPlaylist Lista com todas as playlists do PLAYED.
+ **/
+void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylists, Lista_playlist* listaPlaylist);
 
 #endif /*PESSOA_H*/

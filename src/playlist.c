@@ -13,13 +13,19 @@ struct celMusica{
 struct playlist{
     CelMusica* first;
     CelMusica* last;
+    char* nome;
     int tam;
 };
 
-Playlist* criaPlaylist(){
+char* get_nome_playlist(Playlist* playlist){
+    return playlist->nome;
+}
+
+Playlist* criaPlaylist(char* nome){
     Playlist* playlist = (Playlist*) malloc(sizeof(Playlist));
     playlist->first = NULL;
     playlist->last = NULL;
+    playlist->nome = strdup(nome);
     playlist->tam = 0;
     return playlist;
 }
@@ -49,15 +55,17 @@ void destroiPlaylist(Playlist* playlist){
         destroiMusica(aux->musica); //! TALVEZ DE PROBLEMA
         free(aux);
     }
+    free(playlist->nome);
     free(playlist);
 }
 
 void printPlaylist(Playlist* playlist, FILE* f){
     CelMusica* i = playlist->first;
+    fprintf(f, "Nome playlist: %s\n", playlist->nome);
     while(i != NULL){
-        printMusica(i->musica, f);
+        //!printMusica(i->musica, f);
         i = i->next;
-        printf("\n");
+        //!printf("\n");
     }
 }
 
@@ -68,8 +76,11 @@ Playlist* lePlaylist(char* fileName){
         exit(1);
     }
     Musica* aux;
-    Playlist* playlist = criaPlaylist();
+    char nome[TAM];
+    sscanf(fileName, "z-inputs/Entrada/%s", nome); //esta hardcodado, queremos melhorar isso, embora funcione
+    //!sscanf(fileName, "%*s/%s", nome);
     
+    Playlist* playlist = criaPlaylist(nome);    
     while(!feof(f)){
         aux = leMusica(f);
         insereMusica(playlist, aux);
@@ -78,7 +89,9 @@ Playlist* lePlaylist(char* fileName){
             break;
         }
     }
-
+    //z-input/entrada/acoustic.txt
+    
     fclose(f);
     return playlist;
 }
+
