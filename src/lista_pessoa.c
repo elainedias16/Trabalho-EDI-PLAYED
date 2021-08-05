@@ -40,7 +40,7 @@ void destroiListaPessoa(Lista_pessoa* listaPessoa){
     while(i != NULL){
         aux = i;
         i = i->next;
-        //!destroiPessoa(aux->pessoa);
+        destroiPessoa(aux->pessoa); 
         free(aux);
     }
     free(listaPessoa);

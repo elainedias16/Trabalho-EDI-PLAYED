@@ -72,15 +72,15 @@ void printPlaylist(Playlist* playlist, FILE* f){
 Playlist* lePlaylist(char* fileName){
     FILE* f = fopen(fileName, "r");
     if(f == NULL){
-        printf("Erro na abertura do arquvio!\n");
+        printf("Erro na abertura do arquivo2!\n");
         exit(1);
     }
     Musica* aux;
     char nome[TAM];
-    sscanf(fileName, "z-inputs/Entrada/%s", nome); //esta hardcodado, queremos melhorar isso, embora funcione
+    //!sscanf(fileName, "z-inputs/Entrada/%s", nome); //esta hardcodado, queremos melhorar isso, embora funcione
     //!sscanf(fileName, "%*s/%s", nome);
     
-    Playlist* playlist = criaPlaylist(nome);    
+    Playlist* playlist = criaPlaylist(fileName);    
     while(!feof(f)){
         aux = leMusica(f);
         insereMusica(playlist, aux);
@@ -94,4 +94,3 @@ Playlist* lePlaylist(char* fileName){
     fclose(f);
     return playlist;
 }
-

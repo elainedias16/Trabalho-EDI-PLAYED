@@ -28,7 +28,7 @@ void destroiListaPlaylist(Lista_playlist* songs){
     while(i != NULL){
         aux = i;
         i = i->next;
-        //!destroiPlaylist(i->playlist);
+        destroiPlaylist(aux->playlist);
         free(aux);
     }
     free(songs);

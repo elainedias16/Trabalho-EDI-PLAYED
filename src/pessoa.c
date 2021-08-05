@@ -36,7 +36,8 @@ Pessoa* criaPessoa(char* nome){
 void destroiPessoa(Pessoa* pessoa){
     free(pessoa->nome);
     destroiListaPlaylist(pessoa->songs); //! PODE DAR PROBLEMA LA NA FRENTE
-    destroiListaPessoa(pessoa->amigos); //! SE DER, COLOCAR PARA DESTRUIR FORA
+    //destroiListaPessoa(pessoa->amigos); //! SE DER, COLOCAR PARA DESTRUIR FORA
+    free(pessoa->amigos);
     free(pessoa);
 }
 
@@ -66,10 +67,10 @@ Pessoa* setAmigos(Pessoa* pessoa, Lista_pessoa* amigos){
     return pessoa;
 }
 
-Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists, Lista_playlist* listaPlaylist){
+Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists){
     FILE* f = fopen(fileNameAmizades, "r");
     if(f == NULL){
-        printf("Erro na abertura do arquivo.\n");
+        printf("Erro na abertura do arquivoAAAA.\n");
         exit(1);
     }
     
@@ -101,9 +102,10 @@ Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists
         if(feof(f)){
             break;
         }  
-    }
+    } // Fim da leitura do arquivo amizades.txt
 
-    inserePlaylistsNasPessoas(listaPessoa, fileNamePlaylists,  listaPlaylist);
+    // Leitura do arquivo playlists.txt e inicializar as playlists dos usuários.
+    inserePlaylistsNasPessoas(listaPessoa, fileNamePlaylists);
 
     fclose(f);
     return listaPessoa;
@@ -119,34 +121,73 @@ Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists
 // Pedro;1;eletronica.txt
 // Alice;2;sert.txt;eletrica.txt
 
-void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylists, Lista_playlist* listaPlaylist){
+// void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylists, Lista_playlist* listaPlaylist){
+//     FILE *f = fopen(fileNamePlaylists, "r");
+//     if(f == NULL){
+//         printf("Erro na abertura do arquivo.\n");
+//         exit(1);
+//     }
+    
+//     char nomePessoa[TAM];
+//     char nomePlaylist[TAM];
+//     int qtd;
+//     Pessoa* pessoaAux;
+//     Playlist* playlistAux;
+//     while(!feof(f)){
+//         fscanf(f, "%[^;];%d;", nomePessoa, &qtd);
+//         pessoaAux = buscaPessoaNaLista(listaPessoa, nomePessoa); //chama funcao busca pessoa na lista de pessoa
+//         if(pessoaAux != NULL){
+//             for(int i=0; i < qtd; i++){
+//                 fscanf(f, "%[^;^\n]%*c", nomePlaylist);
+//                 playlistAux = buscaPlaylistNaLista(listaPlaylist, nomePlaylist); //chama busca playlist na lista de playlists
+//                 //printf("[%p]\n", playlistAux);
+                
+//                 inserePlaylist(pessoaAux->songs, playlistAux); 
+//             } 
+//         } else{
+//             fscanf(f, "%*[^\n]\n"); // Caso dê pessoa NULL, ajustando fscanf pra próxima linha.
+//         }
+//     }
+    
+//     fclose(f);
+// }
+
+//funcao que le tudo 
+//for ate tam chamando a lePlaylist
+//abre o arquivo de musica e chama insere musica
+
+void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylists){
     FILE *f = fopen(fileNamePlaylists, "r");
     if(f == NULL){
         printf("Erro na abertura do arquivo.\n");
         exit(1);
     }
-    
     char nomePessoa[TAM];
     char nomePlaylist[TAM];
+    char pasta[TAM];
     int qtd;
     Pessoa* pessoaAux;
     Playlist* playlistAux;
-    while(!feof(f)){
+    
+    while(!feof(f)){ //Lê até o final do arquivo.
         fscanf(f, "%[^;];%d;", nomePessoa, &qtd);
         pessoaAux = buscaPessoaNaLista(listaPessoa, nomePessoa); //chama funcao busca pessoa na lista de pessoa
         if(pessoaAux != NULL){
-            for(int i=0; i < qtd; i++){
+            for(int i = 0; i < qtd; i++){ // Lendo uma linha do arquivo.
                 fscanf(f, "%[^;^\n]%*c", nomePlaylist);
-                playlistAux = buscaPlaylistNaLista(listaPlaylist, nomePlaylist); //chama busca playlist na lista de playlists
-                //printf("[%p]\n", playlistAux);
                 
-                inserePlaylist(pessoaAux->songs, playlistAux); 
+                strcpy(pasta, "Entrada/"); // Resetando string pasta
+                strcat(pasta, nomePlaylist); // Concatenando caminho do arquivo com nome do arquivo
+                strcpy(nomePlaylist, pasta); // Passando o caminho para o nome da playlist
+
+                playlistAux = lePlaylist(nomePlaylist);
+
+                inserePlaylist(pessoaAux->songs, playlistAux);  
             } 
         } else{
             fscanf(f, "%*[^\n]\n"); // Caso dê pessoa NULL, ajustando fscanf pra próxima linha.
         }
     }
-    
+
     fclose(f);
 }
-
