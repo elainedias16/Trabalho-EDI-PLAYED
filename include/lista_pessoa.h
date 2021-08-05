@@ -48,10 +48,33 @@ void inserePessoa(Lista_pessoa* listaPessoa, Pessoa* pessoa);
  **/
 Pessoa* buscaPessoaNaLista(Lista_pessoa* lista, char* nome);
 
+/**
+ * @brief Captura a sentinela referente à primeira célula de uma lista de pessoas.
+ * @param listaPessoa Lista que terá sua sentinela first capturada.
+ * @return Ponteiro para a primeira célula de uma lista de pessoas.
+ **/
 CelPessoa* getFirstCelula(Lista_pessoa* listaPessoa);
 
+/**
+ * @brief Captura o ponteiro a proxima celula contido na struct celula
+ * @param celula É a célula que terá o ponteiro next capturado.
+ * @return Retorna a próxima célula.
+ **/
 CelPessoa* getNextCelula(CelPessoa* celula);
 
+/**
+ * @brief Captura o ponteiro para um tipo pessoa de uma célula específica.
+ * @param celula Célula que terá a pessoa capturada.
+ * @return Ponteiro para pessoa.
+ **/
 Pessoa* getPessoaCelula(CelPessoa* celula);
+
+/**
+ * @brief Inicializa a lista de usuários do PLAYED com a leitura do arquivo amizades.txt e playlists.txt.
+ * @param fileNameAmizades Caminho para o arquivo amizades.txt.
+ * @param fileNamePlaylists Caminho para o arquivo playlists.txt.
+ * @return Lista de pessoas com os campos 'nome', 'amigos' e 'songs', inicializados.
+ **/
+Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists);
 
 #endif /*LISTA_PESSOA_H*/
