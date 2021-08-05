@@ -46,6 +46,17 @@ void destroiListaPessoa(Lista_pessoa* listaPessoa){
     free(listaPessoa);
 }
 
+void destroiEncadeamentoListaPessoa(Lista_pessoa* listaPessoa){
+    CelPessoa* i = listaPessoa->first;
+    CelPessoa* aux;
+    while(i != NULL){
+        aux = i;
+        i = i->next;
+        free(aux);
+    }
+    free(listaPessoa);
+}
+
 void printListaPessoa(Lista_pessoa* listaPessoa, FILE *f){
     CelPessoa* i = listaPessoa->first;
 

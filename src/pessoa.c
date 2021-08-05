@@ -36,8 +36,9 @@ Pessoa* criaPessoa(char* nome){
 void destroiPessoa(Pessoa* pessoa){
     free(pessoa->nome);
     destroiListaPlaylist(pessoa->songs); //! PODE DAR PROBLEMA LA NA FRENTE
+    destroiEncadeamentoListaPessoa(pessoa->amigos);
     //destroiListaPessoa(pessoa->amigos); //! SE DER, COLOCAR PARA DESTRUIR FORA
-    free(pessoa->amigos);
+    //free(pessoa->amigos);
     free(pessoa);
 }
 

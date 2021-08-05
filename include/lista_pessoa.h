@@ -22,6 +22,12 @@ Lista_pessoa* criaListaPessoa();
 void destroiListaPessoa(Lista_pessoa* listaPessoa);
 
 /**
+ * @brief Libera da memória somenta o encadeamento da lista. As pessoas dentro das células permanecem intactas.
+ * @param listaPessoa Lista de pessoas que terá seus ponteiros para células liberados.
+ **/
+void destroiEncadeamentoListaPessoa(Lista_pessoa* listaPessoa);
+
+/**
  * @brief Imprime uma lista de pessoas.
  * @param listaPessoa Lista de pessoas que será impressa.
  * @param f Ponteiro para arquivo cuja lista de pessoas será impressa. Casp seja necessário imprimir no terminal, considere f == STDOUT.
