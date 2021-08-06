@@ -72,7 +72,7 @@ void printPlaylist(Playlist* playlist, FILE* f){
 Playlist* lePlaylist(char* fileName){
     FILE* f = fopen(fileName, "r");
     if(f == NULL){
-        printf("Erro na abertura do arquivo2!\n");
+        printf("Erro na abertura do arquivo!\n");
         exit(1);
     }
     Musica* aux;
@@ -93,4 +93,16 @@ Playlist* lePlaylist(char* fileName){
     
     fclose(f);
     return playlist;
+}
+
+Musica* getMusicaCelMusica(CelMusica* celMusica){
+    return celMusica->musica;
+}
+
+CelMusica* getNextMusica(CelMusica* celMusica){
+    return celMusica->next;
+}
+
+CelMusica* getFirstCelPlaylist(Playlist* playlist){
+    return playlist->first;
 }

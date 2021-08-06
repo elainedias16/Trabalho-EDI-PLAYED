@@ -99,7 +99,7 @@ Pessoa* buscaPessoaNaLista(Lista_pessoa* lista, char* nome){
 Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists){
     FILE* f = fopen(fileNameAmizades, "r");
     if(f == NULL){
-        printf("Erro na abertura do arquivoAAAA.\n");
+        printf("Erro na abertura do arquivo.\n");
         exit(1);
     }
     
@@ -142,3 +142,6 @@ Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists
     return listaPessoa;
 }
 
+CelPessoa* getCelulaPessoaNext(CelPessoa* celPessoa){
+    return celPessoa->next;
+}

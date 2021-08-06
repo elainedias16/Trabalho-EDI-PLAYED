@@ -53,4 +53,25 @@ void printPlaylist(Playlist* playlist, FILE* f);
  **/
 Playlist* lePlaylist(char* fileName);
 
+/**
+ * @brief Captura uma música de uma célula de música.
+ * @param celMusica Célula  que contém a música que será capturada.
+ * @return Ponteiro para música.
+ **/
+Musica* getMusicaCelMusica(CelMusica* celMusica);
+
+/**
+ * @brief Captura a próxima célula de música a partir de uma célula dada.
+ * @param celMusica Célula  que contém o ponteiro para a próxima música.
+ * @return Ponteiro para a próxima música da playlist.
+ **/
+CelMusica* getNextMusica(CelMusica* celMusica);
+
+/**
+ * @brief Captura a sentinela first de uma playlist.
+ * @param playlist Playlist que terá sua sentinela first capturada.
+ * @return Ponteiro para a primeira célula de uma playlist.
+ **/
+CelMusica* getFirstCelPlaylist(Playlist* playlist);
+
 #endif /*PLAYLIST*/

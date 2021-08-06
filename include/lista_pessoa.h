@@ -77,4 +77,11 @@ Pessoa* getPessoaCelula(CelPessoa* celula);
  **/
 Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists);
 
+/**
+ * @brief Captura a próxima célula de pessoa.
+ * @param celPessoa É a célula de pessoa que terá o seu ponteiro next capturado.
+ * @return Retorna a próxima célula de pessoa.
+ **/
+CelPessoa* getCelulaPessoaNext(CelPessoa* celPessoa);
+
 #endif /*LISTA_PESSOA_H*/

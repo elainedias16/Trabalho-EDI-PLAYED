@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/playlist.h"
+#include "../include/lista_pessoa.h"
 //#include "../include/lista_playlist.h"
 
 typedef struct celPlaylist CelPlaylist;
@@ -43,5 +44,36 @@ void inserePlaylist(Lista_playlist* songs, Playlist* playlist);
  **/
 Playlist* buscaPlaylistNaLista(Lista_playlist* lista, char* nome);
 
+/**
+ * @brief 
+ * @param lista 
+ * @param nome 
+ * @return  
+ **/
+void refatoraPlaylistsDasPessoas(Lista_pessoa* listaPessoa);
+
+/**
+ * @brief Captura primeira célula de uma lista de playlits.
+ * @param listaplaylist É a lista de playlists que terá sua primeira célula capturada. 
+ * @return Retorna a primeira célula da lista. 
+ **/
+CelPlaylist* getFirstCelListaPlaylist(Lista_playlist* listaPlaylist);
+
+
+/**
+ * @brief Captura a próxima célula de playlist.
+ * @param celPlaylist É a célula de playlist que terá o seu ponteiro next capturado.
+ * @return Retorna a próxima célula de playlist.
+ **/
+CelPlaylist* getCelulaPlaylistNext(CelPlaylist* celPlaylist);
+
+/**
+ * @brief Captura uma playlist de uma célula.
+ * @param celPlaylist É a célula de playlist que terá a sua playlist capturada.
+ * @return Retorna a playlist da célula.
+ **/
+Playlist* getPlaylistDaCelula(CelPlaylist* celPlaylist);
+
+void geraNovaListaPlaylist(char* artista, Playlist* novaPlaylist, Lista_playlist* percorrida, Lista_playlist* novaListaPlaylist);
 
 #endif /*LISTA_DE_PLAYLIST_*/
