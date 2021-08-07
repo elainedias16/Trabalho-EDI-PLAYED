@@ -180,7 +180,7 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
     int ehVazia;
     while(i != NULL){
         ehVazia = insereMusicasArtistaEmSuaPlaylist(playlistArtista, i->playlist);
-        printf("ehvazio(%d)\n", ehVazia);
+        
         if(ehVazia == VAZIO){ //se a playlist for vazia, precisamos retirar ela da lista
             //destroiPlaylist(i->playlist);
             if(listaPlaylistGenero->first == i && listaPlaylistGenero->last == i){ // removendo a unica playlist da lista

@@ -76,6 +76,12 @@ Playlist* getPlaylistDaCelula(CelPlaylist* celPlaylist);
 
 void geraNovaListaPlaylist(char* artista, Playlist* novaPlaylist, Lista_playlist* percorrida, Lista_playlist* novaListaPlaylist);
 
+/**
+ * @brief
+ * @param playlistArtista
+ * @param listaPlaylistGenero
+ * @return
+ **/
 int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_playlist* listaPlaylistGenero);
 
 
