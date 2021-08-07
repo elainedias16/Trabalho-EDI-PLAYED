@@ -84,4 +84,6 @@ Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists
  **/
 CelPessoa* getCelulaPessoaNext(CelPessoa* celPessoa);
 
+void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa);
+
 #endif /*LISTA_PESSOA_H*/

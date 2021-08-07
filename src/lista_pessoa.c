@@ -145,3 +145,37 @@ Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists
 CelPessoa* getCelulaPessoaNext(CelPessoa* celPessoa){
     return celPessoa->next;
 }
+
+void refatoraListaPlaylistDaListaPessoa(Lista_pessoa* listaPessoa){
+    CelPessoa* celPessoa = listaPessoa->first;
+    while(celPessoa != NULL){
+        refatoraListaPlaylistPessoa(celPessoa->pessoa);
+        celPessoa = celPessoa->next;
+    }
+}
+
+void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa){
+    FILE* f = fopen("Entrada/refatorada.txt", "w");
+    if(f == NULL){
+        printf("Erro na abertura do arquivo.\n");
+        exit(1);
+    }
+
+    char* nomePessoa;
+    int qtdPlaylists;
+    CelPessoa* celPessoa = listaPessoa->first;
+    CelPlaylist* celPlaylist;
+    Pessoa* pessoaAux;
+    Lista_playlist* listaPlaylist;
+    while(celPessoa != NULL){
+        nomePessoa = get_nome_pessoa(celPessoa->pessoa);
+        fprintf(f, "%s;", nomePessoa );
+        
+        listaPlaylist = get_lista_playlist_pessoa(celPessoa->pessoa);
+        escreveListaPlaylistArquivo(listaPlaylist, f);
+    
+        celPessoa = celPessoa->next;
+    }
+
+    fclose(f);
+}

@@ -103,3 +103,15 @@ void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylist
 
     fclose(f);
 }
+
+void refatoraListaPlaylistPessoa(Pessoa* pessoa){
+    Lista_playlist* refatorada = refatoraListaPlaylist(pessoa->songs);
+    pessoa->songs = refatorada;
+}
+
+void escreveListaPlaylistRefatoradaPessoaArquivo(Pessoa* pessoa, FILE* f){
+    int tam = getTamListaPlaylist(pessoa->songs);
+    fprintf(f, "%s;%d;", pessoa->nome, tam);
+
+    
+}

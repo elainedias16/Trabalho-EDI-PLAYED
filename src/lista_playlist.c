@@ -139,32 +139,6 @@ Playlist* getPlaylistDaCelula(CelPlaylist* celPlaylist){
     return celPlaylist->playlist;
 }
 
-// void geraNovaListaPlaylist(char* artista, Playlist* novaPlaylist, Lista_playlist* percorrida, Lista_playlist* novaListaPlaylist){
-//     CelPlaylist* i = getFirstCelListaPlaylist(percorrida);
-//     Playlist* j;
-//     CelMusica* k;
-//     Musica* musicaAux;
-//     char* nomeArtista;
-
-//     while(i != NULL){ //Percorrendo a lista de playlists (celulas de playlist).
-//        j = getPlaylistDaCelula(i);
-//        while(j != NULL){ // Percorrendo as musicas de uma playlist.
-//             musicaAux = getMusicaCelMusica(j);
-//             nomeArtista = get_artista_musica(musicaAux);
-//             if(strcmp(nomeArtista, artista) == 0){
-//                 insereMusica(novaPlaylist, musicaAux);
-//                 //! REMOVE A MÚSICA DA LISTA ANTIGA (SEM DAR FREE NA MUSICA)
-//             }
-
-//             j = getNextMusica(j);
-//         } 
-
-//         i = getCelulaPessoaNext(i); //i++
-//     }
-
-//     inserePlaylist(novaListaPlaylist, novaPlaylist);
-// }
-
 /**
  * modularizar:
  * 0- função de remoção da música de uma playlist com chave sendo o artista. playlist.c
@@ -199,7 +173,7 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
             // remove playlist da lista de playlists
             
             listaPlaylistGenero->tam--;
-        
+            printf("tam [%d]\n", listaPlaylistGenero->tam);
             aux = i;
             if(ant != NULL){
                 i = ant->next;
@@ -208,7 +182,7 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
             free(aux);
             
             if(listaPlaylistGenero->tam == 0){
-                printf("CHEGOU AQUI\n");
+                //printf("CHEGOU AQUI\n");
                 //destroiPlaylist(i->playlist);
                 //destroiListaPlaylist(listaPlaylistGenero);
                 return VAZIO;
@@ -228,7 +202,67 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
 
 // }
 
-// void refatoraListaPlaylistListaPessoa(Lista_pessoa* lista_pessoa){
+// void refatoraListaPlaylistListaPessoa(Pessoa* pessoa, Lista_playlist* listaplaylistGenero){  
 
 // }
 
+Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
+    CelPlaylist* i = listaPlaylistGenero->first;
+    Lista_playlist* refatorada = criaListaPlaylist();;
+    int ehVazio;
+    Playlist* playlistArtistaAux;
+    CelMusica* aux;
+    Musica* musicaAux;
+    char* nomeArtista;
+    int counter = 0;
+    while(i != NULL){
+        counter++;
+        printf("endereco de i : [%p]\n", i);
+        aux = getFirstCelPlaylist(i->playlist);
+        musicaAux = getMusicaCelMusica(aux);
+        nomeArtista = get_artista_musica(musicaAux);
+        playlistArtistaAux = criaPlaylist(nomeArtista);
+        ehVazio = insereMusicasArtistaAPartirDeListaPlaylist(playlistArtistaAux, listaPlaylistGenero);
+        printf("ehVazio: %d\n", ehVazio);
+        inserePlaylist(refatorada, playlistArtistaAux);
+
+        if(ehVazio == VAZIO){
+            destroiListaPlaylist(listaPlaylistGenero);
+            break;
+        }
+        // entrar na primeira playlist
+        // ver a primeira musica para pegar o artista
+
+
+        i = listaPlaylistGenero->first;
+        printf("endereco de i depois de 'incrementar': [%p]\n", i);
+    }
+    printf("counter [%d]\n", counter);
+    //destroiListaPlaylist(listaPlaylistGenero);
+    return refatorada;
+}
+
+// get first musica de uma playlist
+// get nome artista dessa musica
+
+
+int getTamListaPlaylist(Lista_playlist* listaPlaylist){
+    return listaPlaylist->tam;
+}
+
+void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f){
+    CelPlaylist* celPlaylistAux = listaPlaylist->first;
+    char* nomePlaylist;
+    while(celPlaylistAux != NULL){
+        nomePlaylist = get_nome_playlist(celPlaylistAux->playlist);
+        fprintf(f, "%s", nomePlaylist);
+
+        celPlaylistAux = celPlaylistAux->next;
+        
+        if(celPlaylistAux == NULL){
+            fprintf(f, "\n");
+        }else{
+            fprintf(f, ";");
+        }
+    }
+}

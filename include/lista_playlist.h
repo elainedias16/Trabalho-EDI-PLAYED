@@ -74,8 +74,6 @@ CelPlaylist* getCelulaPlaylistNext(CelPlaylist* celPlaylist);
  **/
 Playlist* getPlaylistDaCelula(CelPlaylist* celPlaylist);
 
-void geraNovaListaPlaylist(char* artista, Playlist* novaPlaylist, Lista_playlist* percorrida, Lista_playlist* novaListaPlaylist);
-
 /**
  * @brief
  * @param playlistArtista
@@ -84,5 +82,10 @@ void geraNovaListaPlaylist(char* artista, Playlist* novaPlaylist, Lista_playlist
  **/
 int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_playlist* listaPlaylistGenero);
 
+Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero);
+
+int getTamListaPlaylist(Lista_playlist* listaPlaylist);
+
+void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f);
 
 #endif /*LISTA_DE_PLAYLIST_*/

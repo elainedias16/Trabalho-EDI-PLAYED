@@ -15,13 +15,13 @@ int main(){
     // printListaPessoa(listaPessoa, stdout);
     
     Musica* musica1 = criaMusica("nome1", "artista1"); // quando as 3 playlist morre da erro
-    Musica* musica2 = criaMusica("nome2", "artista1"); // caso contrario n da vazamento, mas explode erros
+    Musica* musica2 = criaMusica("nome2", "artista2"); // caso contrario n da vazamento, mas explode erros
     
-    Musica* musica3 = criaMusica("nome3", "artista1");
-    Musica* musica4 = criaMusica("nome4", "artista1");
+    Musica* musica3 = criaMusica("nome3", "artista3");
+    Musica* musica4 = criaMusica("nome4", "artista4");
     
-    Musica* musica5 = criaMusica("nome5", "artista1");
-    Musica* musica6 = criaMusica("nome6", "artista1");
+    Musica* musica5 = criaMusica("nome5", "artista5");
+    Musica* musica6 = criaMusica("nome6", "artista6");
     
     Playlist* playlist1 = criaPlaylist("playlist1");
     Playlist* playlist2 = criaPlaylist("playlist2");
@@ -41,6 +41,9 @@ int main(){
     inserePlaylist(listaGenerica, playlist2);
     inserePlaylist(listaGenerica, playlist3);
     
+    Lista_playlist* refatorada = refatoraListaPlaylist(listaGenerica);
+
+    printListaPlaylist(refatorada, stdout);
     //printf("PLAYLIST TODA\n");
     //printPlaylist(playlist, stdout);
 
@@ -55,9 +58,9 @@ int main(){
     //printPlaylist(playlist, stdout);
     //destroiListaPessoa(listaPessoa);
 
-    Playlist* artista1 = criaPlaylist("artista1");
-    insereMusicasArtistaAPartirDeListaPlaylist(artista1, listaGenerica);
-    printPlaylist(artista1, stdout);
+    // Playlist* artista1 = criaPlaylist("artista1");
+    // insereMusicasArtistaAPartirDeListaPlaylist(artista1, listaGenerica);
+    // printPlaylist(artista1, stdout);
     //printf("IMPRIMINDO PLAYLIST1:\n");
     //printPlaylist(playlist1, stdout);
     
@@ -70,9 +73,12 @@ int main(){
     //insereMusicasArtistaEmSuaPlaylist(artista1, playlist);
     //printPlaylist(playlist, stdout);
     
-    destroiListaPlaylist(listaGenerica);
-    destroiPlaylist(artista1);
+    //destroiListaPlaylist(listaGenerica);
+    destroiListaPlaylist(refatorada);
+    //destroiPlaylist(artista1);
 
+
+    //ja ta dando erro so com a funcao refatoraListaPlaylist
     return 0;
 }
 

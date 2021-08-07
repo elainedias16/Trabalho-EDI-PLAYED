@@ -72,4 +72,6 @@ Pessoa* setAmigos(Pessoa* pessoa, Lista_pessoa* amigos);
  **/
 void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylists);
 
+void refatoraListaPlaylistPessoa(Pessoa* pessoa);
+
 #endif /*PESSOA_H*/
