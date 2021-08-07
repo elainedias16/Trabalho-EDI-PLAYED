@@ -4,6 +4,8 @@
 #include "../include/playlist.h"
 
 #define TAM 50
+#define VAZIO 0
+#define NAOVAZIO 1
 
 struct celMusica{
     Musica* musica;
@@ -63,9 +65,9 @@ void printPlaylist(Playlist* playlist, FILE* f){
     CelMusica* i = playlist->first;
     fprintf(f, "Nome playlist: %s\n", playlist->nome);
     while(i != NULL){
-        //!printMusica(i->musica, f);
+        printMusica(i->musica, f);
         i = i->next;
-        //!printf("\n");
+        printf("\n");
     }
 }
 
@@ -105,4 +107,72 @@ CelMusica* getNextMusica(CelMusica* celMusica){
 
 CelMusica* getFirstCelPlaylist(Playlist* playlist){
     return playlist->first;
+}
+
+int removeMusicasDeUmArtistaDaPlaylist(Playlist* playlist, char* artista){
+   CelMusica* celMusAux = playlist->first;
+   CelMusica* celMusAnt = NULL;
+   CelMusica* celMusAux2;
+   Musica* musicaAux;// = celMusAux-> musica;
+   char* artistaAux;// = get_artista_musica(musicaAux);
+ 
+    while(celMusAux != NULL){ //Fazendo a procura 
+        musicaAux = celMusAux->musica;
+        artistaAux = get_artista_musica(musicaAux);
+        if(strcmp(artista, artistaAux) == 0){
+            if(celMusAux != NULL){ //encontramos a celMusAux que tem o artista que buscamos
+                if(celMusAux == playlist->first && celMusAux == playlist->last){ //só tem uma musica na lista
+                    playlist->first = playlist->last = NULL;
+                    //free(playlist);
+                    //destroiPlaylist(playlist);
+                    //return VAZIO;
+                    //break;
+                }
+                else if(celMusAux == playlist->first){// a musica a ser retirada eh a primeira da playlist
+                    playlist->first = celMusAux->next;
+                }
+                else if(celMusAux == playlist->last){ //a musica a ser retirada eh a ultima da playlist
+                    playlist->last = celMusAnt;
+                    celMusAnt->next = NULL;
+                }
+                else{// a musica a ser retirada nao eh nenhum caso acima
+                    celMusAnt->next = celMusAux->next;
+                }
+                
+                celMusAux2 = celMusAux;
+                celMusAux = celMusAux->next;
+                free(celMusAux2); //retirando a musica da lista
+                playlist->tam--;
+                //printf("[%d]\n", playlist->tam);
+                
+                if(playlist->tam == 0){
+                   // printf("RETORNOU VAZIO\n");
+                    destroiPlaylist(playlist);
+                    return VAZIO;
+                }
+
+                continue;
+            }
+        }   
+        celMusAnt = celMusAux;
+        celMusAux = celMusAux->next;
+    } 
+    return NAOVAZIO;
+}
+
+int insereMusicasArtistaEmSuaPlaylist(Playlist* playlistArtista, Playlist* playlistGenero){
+    CelMusica* i = playlistGenero->first;
+    //Musica* musicaAux;
+    char* artistaAux;
+    while(i != NULL){
+        artistaAux = get_artista_musica(i->musica);
+        if(strcmp(playlistArtista->nome, artistaAux) == 0){  
+            insereMusica(playlistArtista, i->musica);
+            //musicaAux = i->musica; 
+        }
+        
+        i = i->next;
+        //musicaAux = i->musica; 
+    }
+    return removeMusicasDeUmArtistaDaPlaylist(playlistGenero, playlistArtista->nome);
 }

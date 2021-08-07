@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/playlist.h"
-#include "../include/lista_pessoa.h"
+//#include "../include/lista_pessoa.h"
 //#include "../include/lista_playlist.h"
 
 typedef struct celPlaylist CelPlaylist;
@@ -50,7 +50,7 @@ Playlist* buscaPlaylistNaLista(Lista_playlist* lista, char* nome);
  * @param nome 
  * @return  
  **/
-void refatoraPlaylistsDasPessoas(Lista_pessoa* listaPessoa);
+//void refatoraPlaylistsDasPessoas(Lista_pessoa* listaPessoa);
 
 /**
  * @brief Captura primeira célula de uma lista de playlits.
@@ -75,5 +75,8 @@ CelPlaylist* getCelulaPlaylistNext(CelPlaylist* celPlaylist);
 Playlist* getPlaylistDaCelula(CelPlaylist* celPlaylist);
 
 void geraNovaListaPlaylist(char* artista, Playlist* novaPlaylist, Lista_playlist* percorrida, Lista_playlist* novaListaPlaylist);
+
+int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_playlist* listaPlaylistGenero);
+
 
 #endif /*LISTA_DE_PLAYLIST_*/
