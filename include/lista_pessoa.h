@@ -84,6 +84,17 @@ Lista_pessoa* inicializaUsuarios(char* fileNameAmizades, char* fileNamePlaylists
  **/
 CelPessoa* getCelulaPessoaNext(CelPessoa* celPessoa);
 
+/**
+ * @brief Refatora as listas de playlists de todas as pessoas cadastradas no PLAYED.
+ * @param listaPessoa Lista de pessoas que será percorrida.
+ **/
+void refatoraListaPlaylistDaListaPessoa(Lista_pessoa* listaPessoa);
+
+/**
+ * @brief Escreve as listas de playlist refatoradas das pessoas no arquivo.
+ * @param listaPessoa São as pessoas que tiveram suas listas de playlist refatoradas 
+   e que agora serão impressas no arquivo.
+ **/
 void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa);
 
 #endif /*LISTA_PESSOA_H*/

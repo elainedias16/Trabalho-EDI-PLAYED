@@ -72,6 +72,10 @@ Pessoa* setAmigos(Pessoa* pessoa, Lista_pessoa* amigos);
  **/
 void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylists);
 
+/**
+ * @brief Refatora a lista de playlists de apenas uma pessoa.
+ * @param pessoa Pessoa que terá sua lista de playlists refatorada.
+ **/
 void refatoraListaPlaylistPessoa(Pessoa* pessoa);
 
 #endif /*PESSOA_H*/

@@ -22,13 +22,6 @@ char* get_nome_musica(Musica* musica);
  **/
 char* get_artista_musica(Musica* musica);
 
-/**
- * @brief Captura o ponteiro para o início da string que representa o gênero de uma música.
- * @param musica Música que terá seu nome pego.
- * @return Ponteiro para nome de um gênero de uma música.
- **/
-//!char* get_genero_musica(Musica* musica);
-
 /** 
  * @brief Cria uma musica
  * @param nome É o nome da musica.

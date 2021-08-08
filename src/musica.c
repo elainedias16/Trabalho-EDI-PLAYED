@@ -3,7 +3,7 @@
 // #include <string.h>
 #include "../include/musica.h"
 
-#define TAM 50
+#define TAM 200
 
 struct musica{
     char* nome;
@@ -48,7 +48,14 @@ Musica* leMusica(FILE* f){
     char nome[TAM];
     char artista[TAM];
     // char genero[TAM];
-    fscanf(f, "%[^-]- %[^\n]\n", artista , nome);
+   
+    fscanf(f, "%[^-]%*c%*c%[^\n]\n", artista , nome);
+    //fscanf(f, "%[^-]-%*c%[^\n]\n", artista , nome);
+    artista[strlen(artista) - 1] = '\0';
+    strcat(artista, ".txt");
+
     Musica* musica = criaMusica(nome, artista);
     return musica;
 }
+//Diego & Victor Hugo - A Culpa é do Meu Grau (feat. Zé Neto & Cristiano) - Ao Vivo em Brasília
+

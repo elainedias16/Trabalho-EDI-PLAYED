@@ -3,7 +3,7 @@
 // #include "../include/playlist.h"
 #include "../include/lista_playlist.h"
 
-#define TAM 100
+#define TAM 200
 #define VAZIO 0
 #define NAOVAZIO 1
 
@@ -173,7 +173,6 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
             // remove playlist da lista de playlists
             
             listaPlaylistGenero->tam--;
-            printf("tam [%d]\n", listaPlaylistGenero->tam);
             aux = i;
             
             if(ant != NULL){
@@ -220,9 +219,8 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
     CelMusica* aux;
     Musica* musicaAux;
     char* nomeArtista;
-    int counter = 0;
+
     while(i != NULL){
-        counter++;
         i = listaPlaylistGenero->first; 
         //printf("endereco de i : [%p]\n", i);
         aux = getFirstCelPlaylist(i->playlist);
@@ -230,7 +228,6 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
         nomeArtista = get_artista_musica(musicaAux);
         playlistArtistaAux = criaPlaylist(nomeArtista);
         ehVazio = insereMusicasArtistaAPartirDeListaPlaylist(playlistArtistaAux, listaPlaylistGenero);
-        printf("ehVazio: %d\n", ehVazio);
         inserePlaylist(refatorada, playlistArtistaAux);
 
         if(ehVazio == VAZIO ){
@@ -261,15 +258,17 @@ int getTamListaPlaylist(Lista_playlist* listaPlaylist){
 void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f){
     CelPlaylist* celPlaylistAux = listaPlaylist->first;
     char* nomePlaylist;
+    //int i = 0;
     while(celPlaylistAux != NULL){
+        //i++;
         nomePlaylist = get_nome_playlist(celPlaylistAux->playlist);
         fprintf(f, "%s", nomePlaylist);
 
         celPlaylistAux = celPlaylistAux->next;
         
         if(celPlaylistAux == NULL){
-            fprintf(f, "\n");
-        }else{
+            break; //fprintf(f, "\n");
+        } else{
             fprintf(f, ";");
         }
     }

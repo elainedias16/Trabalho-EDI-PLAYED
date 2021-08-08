@@ -3,7 +3,7 @@
 #include "../include/lista_pessoa.h"
 // #include "../include/pessoa.h"
 
-#define TAM 50
+#define TAM 200
 
 struct celPessoa{
     Pessoa* pessoa;
@@ -155,7 +155,7 @@ void refatoraListaPlaylistDaListaPessoa(Lista_pessoa* listaPessoa){
 }
 
 void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa){
-    FILE* f = fopen("Entrada/played-refatorada.txt", "w");
+    FILE* f = fopen("Saida_testes/played-refatoradaTESTE.txt", "w");
     if(f == NULL){
         printf("Erro na abertura do arquivo.\n");
         exit(1);
@@ -167,14 +167,19 @@ void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa){
     CelPlaylist* celPlaylist;
     Pessoa* pessoaAux;
     Lista_playlist* listaPlaylist;
+    int qtd;
     while(celPessoa != NULL){
         nomePessoa = get_nome_pessoa(celPessoa->pessoa);
-        fprintf(f, "%s;", nomePessoa );
-        
         listaPlaylist = get_lista_playlist_pessoa(celPessoa->pessoa);
+        qtd = getTamListaPlaylist(listaPlaylist);
+        fprintf(f, "%s;%d;", nomePessoa, qtd);
+        
         escreveListaPlaylistArquivo(listaPlaylist, f);
-    
+        
         celPessoa = celPessoa->next;
+        if(celPessoa != NULL){
+            fprintf(f, "\n");
+        }
     }
 
     fclose(f);

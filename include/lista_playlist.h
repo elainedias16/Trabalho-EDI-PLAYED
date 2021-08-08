@@ -45,20 +45,11 @@ void inserePlaylist(Lista_playlist* songs, Playlist* playlist);
 Playlist* buscaPlaylistNaLista(Lista_playlist* lista, char* nome);
 
 /**
- * @brief 
- * @param lista 
- * @param nome 
- * @return  
- **/
-//void refatoraPlaylistsDasPessoas(Lista_pessoa* listaPessoa);
-
-/**
  * @brief Captura primeira célula de uma lista de playlits.
  * @param listaplaylist É a lista de playlists que terá sua primeira célula capturada. 
  * @return Retorna a primeira célula da lista. 
  **/
 CelPlaylist* getFirstCelListaPlaylist(Lista_playlist* listaPlaylist);
-
 
 /**
  * @brief Captura a próxima célula de playlist.
@@ -75,17 +66,34 @@ CelPlaylist* getCelulaPlaylistNext(CelPlaylist* celPlaylist);
 Playlist* getPlaylistDaCelula(CelPlaylist* celPlaylist);
 
 /**
- * @brief
- * @param playlistArtista
- * @param listaPlaylistGenero
- * @return
+ * @brief Percorre uma lista de playlists procurando por músicas de um determinado artista. Todas as músicas
+ * desse artista são transferidas para a sua própria playlist. 
+ * @param playlistArtista Playlist do artista.
+ * @param listaPlaylistGenero Lista de playlists, que no contexto do trabalho está organizada por gêneros musicais.
+ * @return 0, caso a lista de playlists fique vazia e 1, caso contrário.
  **/
 int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_playlist* listaPlaylistGenero);
 
+/**
+ * @brief Dada uma lista de playlists, reorganiza ela com as músicas separadas por artistas.
+ * @param listaPlaylistGenero Lista de playlists, que no contexto do trabalho está organizada por gêneros musicais.
+ * @return Novo ponteiro para a nova lista de playlists. A playlist separada por gêneros musicais é liberada da memória.
+ **/
 Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero);
 
+/**
+ * @brief Captura o tamanho de uma lista de playlists.
+ * @param listaPlaylist É a célula de playlist que terá a sua playlist capturada.
+ * @return Tamanho de uma lista de playlists1.
+ **/
 int getTamListaPlaylist(Lista_playlist* listaPlaylist);
 
+
+/**
+ * @brief Escreve uma lista de playlist refatorada no arquivo
+ * @param listaPlaylist É a lista de playlist que será impressa.
+ * @param f Ponteiro que aponta para o arquivo onde será impresso a lista.
+ **/
 void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f);
 
 #endif /*LISTA_DE_PLAYLIST_*/

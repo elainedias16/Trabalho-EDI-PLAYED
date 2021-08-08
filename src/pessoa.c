@@ -5,7 +5,7 @@
 // #include "../include/lista_playlist.h"
 #include "../include/pessoa.h"
 
-#define TAM 100
+#define TAM 200
 
 struct pessoa{
     char* nome;

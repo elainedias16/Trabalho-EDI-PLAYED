@@ -3,7 +3,7 @@
 // #include "../include/musica.h"
 #include "../include/playlist.h"
 
-#define TAM 50
+#define TAM 200
 #define VAZIO 0
 #define NAOVAZIO 1
 
@@ -113,8 +113,8 @@ int removeMusicasDeUmArtistaDaPlaylist(Playlist* playlist, char* artista){
    CelMusica* celMusAux = playlist->first;
    CelMusica* celMusAnt = NULL;
    CelMusica* celMusAux2;
-   Musica* musicaAux;// = celMusAux-> musica;
-   char* artistaAux;// = get_artista_musica(musicaAux);
+   Musica* musicaAux;
+   char* artistaAux;
  
     while(celMusAux != NULL){ //Fazendo a procura 
         musicaAux = celMusAux->musica;
@@ -143,10 +143,9 @@ int removeMusicasDeUmArtistaDaPlaylist(Playlist* playlist, char* artista){
                 celMusAux = celMusAux->next;
                 free(celMusAux2); //retirando a musica da lista
                 playlist->tam--;
-                //printf("[%d]\n", playlist->tam);
+               
                 
                 if(playlist->tam == 0){
-                    // printf("RETORNOU VAZIO\n");
                     destroiPlaylist(playlist); 
                     return VAZIO;
                 }
@@ -162,17 +161,16 @@ int removeMusicasDeUmArtistaDaPlaylist(Playlist* playlist, char* artista){
 
 int insereMusicasArtistaEmSuaPlaylist(Playlist* playlistArtista, Playlist* playlistGenero){
     CelMusica* i = playlistGenero->first;
-    //Musica* musicaAux;
+    
     char* artistaAux;
     while(i != NULL){
         artistaAux = get_artista_musica(i->musica);
         if(strcmp(playlistArtista->nome, artistaAux) == 0){  
             insereMusica(playlistArtista, i->musica);
-            //musicaAux = i->musica; 
         }
         
         i = i->next;
-        //musicaAux = i->musica; 
+      
     }
     return removeMusicasDeUmArtistaDaPlaylist(playlistGenero, playlistArtista->nome);
 }
