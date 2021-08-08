@@ -155,7 +155,7 @@ void refatoraListaPlaylistDaListaPessoa(Lista_pessoa* listaPessoa){
 }
 
 void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa){
-    FILE* f = fopen("Entrada/refatorada.txt", "w");
+    FILE* f = fopen("Entrada/played-refatorada.txt", "w");
     if(f == NULL){
         printf("Erro na abertura do arquivo.\n");
         exit(1);

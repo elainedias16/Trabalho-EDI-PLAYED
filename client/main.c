@@ -20,12 +20,12 @@ int main(){
     Musica* musica3 = criaMusica("nome3", "artista3");
     Musica* musica4 = criaMusica("nome4", "artista4");
     
-    // Musica* musica5 = criaMusica("nome5", "artista5");
-    // Musica* musica6 = criaMusica("nome6", "artista6");
+    Musica* musica5 = criaMusica("nome5", "artista5");
+    Musica* musica6 = criaMusica("nome6", "artista6");
     
     Playlist* playlist1 = criaPlaylist("playlist1");
     Playlist* playlist2 = criaPlaylist("playlist2");
-    // Playlist* playlist3 = criaPlaylist("playlist3");
+    Playlist* playlist3 = criaPlaylist("playlist3");
 
     insereMusica(playlist1, musica1); // playlist1
     insereMusica(playlist1, musica2);
@@ -33,21 +33,21 @@ int main(){
     insereMusica(playlist2, musica3); // playlist2
     insereMusica(playlist2, musica4);
     
-    // insereMusica(playlist3, musica5); // playlist3
-    // insereMusica(playlist3, musica6);
+    insereMusica(playlist3, musica5); // playlist3
+    insereMusica(playlist3, musica6);
     
     Lista_playlist* listaGenerica = criaListaPlaylist();
     inserePlaylist(listaGenerica, playlist1);
     inserePlaylist(listaGenerica, playlist2);
-    // inserePlaylist(listaGenerica, playlist3);
+    inserePlaylist(listaGenerica, playlist3);
 
 
-    // printListaPlaylist(listaGenerica, stdout);
+    //printListaPlaylist(listaGenerica, stdout);
     
     //Playlist* artista1 = criaPlaylist("artista1");
-   Lista_playlist* refatorada = refatoraListaPlaylist(listaGenerica);
+    Lista_playlist* refatorada = refatoraListaPlaylist(listaGenerica);
 
-   //printListaPlaylist(refatorada, stdout);
+    printListaPlaylist(refatorada, stdout);
     //printf("PLAYLIST TODA\n");
     //printPlaylist(playlist, stdout);
 
@@ -96,7 +96,7 @@ int main(){
 //TODO INSERIMOS NA PLAYLIST DESSE MESMO ARTISTA.
 
 //TODO PROXIMO PASSO:
-//TODO FAZER ISSO PARA TODOS OS ARTISTAS.
+//TODO FAZER ISSO PARA TODOS OS ARTISTAS. OK.
 
 //TODO DEPOIS:
 //TODO FAZER ISSO PARA UMA DETERMINADA PESSOA DO PLAYED.

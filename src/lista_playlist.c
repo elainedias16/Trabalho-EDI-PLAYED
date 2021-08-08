@@ -175,12 +175,17 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
             listaPlaylistGenero->tam--;
             printf("tam [%d]\n", listaPlaylistGenero->tam);
             aux = i;
+            
             if(ant != NULL){
-                i = ant->next;
+                
+            } else{
+                i = listaPlaylistGenero->first;
             }
             
-            free(aux);
-            
+            //if(listaPlaylistGenero->tam != 0){
+            free(aux); //free na celula da playlist
+            //}
+
             if(listaPlaylistGenero->tam == 0){
                 //printf("CHEGOU AQUI\n");
                 //destroiPlaylist(i->playlist);
