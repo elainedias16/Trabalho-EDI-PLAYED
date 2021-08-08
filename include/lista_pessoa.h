@@ -97,4 +97,6 @@ void refatoraListaPlaylistDaListaPessoa(Lista_pessoa* listaPessoa);
  **/
 void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa);
 
+void imprimeListaPlaylistDaListaPessoaNoArquivo(Lista_pessoa* listaPessoa);
+
 #endif /*LISTA_PESSOA_H*/

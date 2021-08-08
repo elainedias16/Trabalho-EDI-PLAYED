@@ -39,20 +39,20 @@ void destroiMusica(Musica* musica){
 }
 
 void printMusica(Musica* musica, FILE* f){
-    fprintf(f, "Nome: %s\n" , musica->nome);
-    fprintf(f, "Artista: %s\n", musica->artista);
+    fprintf(f, "%s - %s" , musica->artista, musica->nome);
+
+    //fprintf(f, "Artista: %s\n", musica->artista);
     //fprintf(f, "Genero: %s\n", musica->genero);
 }
 
 Musica* leMusica(FILE* f){
     char nome[TAM];
     char artista[TAM];
-    // char genero[TAM];
    
     fscanf(f, "%[^-]%*c%*c%[^\n]\n", artista , nome);
     //fscanf(f, "%[^-]-%*c%[^\n]\n", artista , nome);
-    artista[strlen(artista) - 1] = '\0';
-    strcat(artista, ".txt");
+    artista[strlen(artista) - 1] = '\0'; // eliminar o espaço
+    //!strcat(artista, ".txt");
 
     Musica* musica = criaMusica(nome, artista);
     return musica;

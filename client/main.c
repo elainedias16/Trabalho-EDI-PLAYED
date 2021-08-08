@@ -16,7 +16,7 @@ int main(){
     
     refatoraListaPlaylistDaListaPessoa(listaPessoa);
     escrevePlaylistsRefatoradasArquivo(listaPessoa);
-
+    imprimeListaPlaylistDaListaPessoaNoArquivo(listaPessoa);
     destroiListaPessoa(listaPessoa);
     return 0;
     

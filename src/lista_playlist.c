@@ -2,6 +2,7 @@
 // #include <stdlib.h>
 // #include "../include/playlist.h"
 #include "../include/lista_playlist.h"
+#include "string.h"
 
 #define TAM 200
 #define VAZIO 0
@@ -38,13 +39,30 @@ void destroiListaPlaylist(Lista_playlist* songs){
     free(songs);
 }
 
-void printListaPlaylist(Lista_playlist* songs, FILE* f){
+void printListaPlaylist(Lista_playlist* songs, char* pasta){
     CelPlaylist* i = songs->first;
+    FILE* f;
+    strcat(pasta, "/");
+    char* nomePlaylist;
+    char aux[TAM];
+    char aux2[TAM];
+    strcpy(aux, pasta);
     while(i != NULL){
-        fprintf(f, "\n-----\n");
-        printPlaylist(i->playlist, f);
+        nomePlaylist = get_nome_playlist(i->playlist);
+        strcpy(aux2, nomePlaylist);
+        strcat(aux2, ".txt");
+        strcat(pasta, aux2);
+
+        f = fopen(pasta, "w");
+        if(f == NULL){
+            printf("Erro na abertura do arquivo!\n");
+            exit(1);
+        }
+        printPlaylist(i->playlist, f); //imprime no arquivo
         i = i->next;
-        fprintf(f, "\n-----\n");
+        fclose(f);
+
+        strcpy(pasta, aux); // resetando pasta
     }
 }
 
@@ -76,60 +94,9 @@ Playlist* buscaPlaylistNaLista(Lista_playlist* lista, char* nome){
     return NULL;
 }
 
-// void refatoraPlaylistsDasPessoas(Lista_pessoa* listaPessoa){
-//     Lista_playlist* listaPlaylistAux;
-//     CelPessoa* i = getFirstCelula(listaPessoa);
-//     CelPlaylist* j;
-//     CelMusica* k;
-//     Playlist* playlistNova;
-//     Playlist* playlistAux;
-//     Pessoa* pessoaAux;
-//     Lista_playlist* novaListaPlaylists;
-//     char* artistaAux;
-//     Musica* musicaAux;
-//     ////varrear a lista de pessoa
-//     ////na pessoa, ver quantas playlists tem e 
-//     //na playlist , ver o nome da banda/cantor , criar uma playlist com esse nome e
-//     //inserir aquela musica e retirar da playlist master
-//     //chegar ate o fim do arquivo e ver se tem esse cantor/banda de novo 
-//     //se tiver, inserir aquela musica e retirar da playlist master
-//     //se n, passar para proxima linha e criar outra plaliyst
-    
-//     while(i != NULL){ // Percorrendo lista de pessoas.
-//         pessoaAux = getPessoaCelula(i);
-//         listaPlaylistAux = get_lista_playlist_pessoa(pessoaAux);
-//         j = getFirstCelListaPlaylist(listaPlaylistAux);
-        
-//         novaListaPlaylists = criaListaPlaylist();
-//         while(j != NULL){ // Percorrendo lista de playlists de uma pessoa.
-//             playlistAux = getPlaylistDaCelula(j);
-//             k = getFirstCelPlaylist(playlistAux);
-            
-//             while(k != NULL){ // Percorrendo as musicas de uma playlist.
-//                 musicaAux = getMusicaCelMusica(k);
-//                 artistaAux = get_artista_musica(musicaAux);
-//                 playlistNova = criaPlaylist(artistaAux);
-//                 //! função que percorre todas as playlists de uma pessoa procurando o mesmo artista
-//                 geraNovaListaPlaylist(artistaAux, playlistNova, listaPlaylistAux, novaListaPlaylists);
-//                 k = getNextMusica(k); // Incrementando k.
-//             }
-
-//             j = getCelulaPlaylistNext(j); // Incrementando j, ou seja indo para a próxima playlist da listaPlaylistAux.
-           
-//         }
-        
-//         i = getNextCelula(i); // Incrementando i, ou seja, indo para a próxima pessoa da listaPessoa.
-//     }
-        
-//     //! LIBERAR A LISTA DEPLAYLIST ANTIGA
-//     //! SETAR A NOVA LISTA DE PLAYLIST NA PESSOA
-// }
-
-
 CelPlaylist* getFirstCelListaPlaylist(Lista_playlist* listaPlaylist){
     return listaPlaylist->first;
 }
-
 
 CelPlaylist* getCelulaPlaylistNext(CelPlaylist* celPlaylist){
     return celPlaylist->next;
@@ -138,14 +105,6 @@ CelPlaylist* getCelulaPlaylistNext(CelPlaylist* celPlaylist){
 Playlist* getPlaylistDaCelula(CelPlaylist* celPlaylist){
     return celPlaylist->playlist;
 }
-
-/**
- * modularizar:
- * 0- função de remoção da música de uma playlist com chave sendo o artista. playlist.c
- * 1- função que pega uma lista de playlists qualquer e a refatora. listaplaylist.c
- * 2- função que pega uma pessoa e refatora sua lista de playlists (usando 1 como auxiliar). pessoa.c
- * 3- função que pega uma lista de pessoas e refatora a playlist de todos (usando 2 como auxiliar). listapessoa.c
- **/
 
 int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_playlist* listaPlaylistGenero){
     CelPlaylist* i = listaPlaylistGenero->first;
@@ -199,17 +158,6 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
     return NAOVAZIO;
 }
 
-//void insereMusicasArtistas
-//Playlist* playlistArtista, Playlist* playlistGenero
-
-// void refatoraListaPlaylistPessoa(Pessoa* pessoa){
-
-// }
-
-// void refatoraListaPlaylistListaPessoa(Pessoa* pessoa, Lista_playlist* listaplaylistGenero){  
-
-// }
-
 Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
     //a primeira playlist refatora certo, mas da erro quando vai pras proximas
     CelPlaylist* i = listaPlaylistGenero->first;
@@ -258,9 +206,7 @@ int getTamListaPlaylist(Lista_playlist* listaPlaylist){
 void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f){
     CelPlaylist* celPlaylistAux = listaPlaylist->first;
     char* nomePlaylist;
-    //int i = 0;
     while(celPlaylistAux != NULL){
-        //i++;
         nomePlaylist = get_nome_playlist(celPlaylistAux->playlist);
         fprintf(f, "%s", nomePlaylist);
 

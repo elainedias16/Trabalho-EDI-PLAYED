@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #include "../include/lista_playlist.h"
 //#include "../include/pessoa.h"
 
@@ -77,5 +78,9 @@ void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylist
  * @param pessoa Pessoa que terá sua lista de playlists refatorada.
  **/
 void refatoraListaPlaylistPessoa(Pessoa* pessoa);
+
+
+void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa);
+
 
 #endif /*PESSOA_H*/

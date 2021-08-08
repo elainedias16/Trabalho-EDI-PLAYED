@@ -63,11 +63,12 @@ void destroiPlaylist(Playlist* playlist){
 
 void printPlaylist(Playlist* playlist, FILE* f){
     CelMusica* i = playlist->first;
-    fprintf(f, "Nome playlist: %s\n", playlist->nome);
     while(i != NULL){
         printMusica(i->musica, f);
         i = i->next;
-        printf("\n");
+        if(i != NULL){
+            fprintf(f, "\n");
+        }
     }
 }
 
@@ -79,8 +80,6 @@ Playlist* lePlaylist(char* fileName){
     }
     Musica* aux;
     char nome[TAM];
-    //!sscanf(fileName, "z-inputs/Entrada/%s", nome); //esta hardcodado, queremos melhorar isso, embora funcione
-    //!sscanf(fileName, "%*s/%s", nome);
     
     Playlist* playlist = criaPlaylist(fileName);    
     while(!feof(f)){

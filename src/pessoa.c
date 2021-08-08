@@ -4,6 +4,7 @@
 // #include "../include/lista_pessoa.h"
 // #include "../include/lista_playlist.h"
 #include "../include/pessoa.h"
+// #include <sys/stat.h>
 
 #define TAM 200
 
@@ -42,21 +43,21 @@ void destroiPessoa(Pessoa* pessoa){
     free(pessoa);
 }
 
-void printPessoa(Pessoa* pessoa, FILE* f){
-    fprintf(f, "Nome: %s\n", pessoa->nome);
-    CelPessoa* i = getFirstCelula(pessoa->amigos);
-    Pessoa* aux;
-    fprintf(f , "Lista de amigos\n");
-    while(i != NULL){
-        aux = getPessoaCelula(i);
-        fprintf(f, "%s\n", aux->nome);
-        i = getNextCelula(i);
-    }
-    fprintf(f , "Lista de playlists\n");
-    printListaPlaylist(pessoa->songs, f);
+// void printPessoa(Pessoa* pessoa, FILE* f){
+//     fprintf(f, "Nome: %s\n", pessoa->nome);
+//     CelPessoa* i = getFirstCelula(pessoa->amigos);
+//     Pessoa* aux;
+//     fprintf(f , "Lista de amigos\n");
+//     while(i != NULL){
+//         aux = getPessoaCelula(i);
+//         fprintf(f, "%s\n", aux->nome);
+//         i = getNextCelula(i);
+//     }
+//     fprintf(f , "Lista de playlists\n");
+//     printListaPlaylist(pessoa->songs, f);
     
-    fprintf(f, "---------------\n");
-}
+//     fprintf(f, "---------------\n");
+// }
 
 Pessoa* setSongs(Pessoa* pessoa, Lista_playlist* songs){
     pessoa->songs = songs;
@@ -111,7 +112,15 @@ void refatoraListaPlaylistPessoa(Pessoa* pessoa){
 
 void escreveListaPlaylistRefatoradaPessoaArquivo(Pessoa* pessoa, FILE* f){
     int tam = getTamListaPlaylist(pessoa->songs);
-    fprintf(f, "%s;%d;", pessoa->nome, tam);
-
-    
+    fprintf(f, "%s;%d;", pessoa->nome, tam);  
 }
+
+void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa){
+    char pasta[TAM] = "Saida_testes/";
+    strcat(pasta, pessoa->nome);
+    mkdir(pasta, 0777);
+    printListaPlaylist(pessoa->songs, pasta);
+}
+
+
+//#include <sys/stat.h>

@@ -59,14 +59,14 @@ void destroiEncadeamentoListaPessoa(Lista_pessoa* listaPessoa){
     free(listaPessoa);
 }
 
-void printListaPessoa(Lista_pessoa* listaPessoa, FILE *f){
-    CelPessoa* i = listaPessoa->first;
+// void printListaPessoa(Lista_pessoa* listaPessoa, FILE *f){
+//     CelPessoa* i = listaPessoa->first;
 
-    while(i != NULL){
-        printPessoa(i->pessoa, f);
-        i = i->next;
-    }
-}
+//     while(i != NULL){
+//         printPessoa(i->pessoa, f);
+//         i = i->next;
+//     }
+// }
 
 void inserePessoa(Lista_pessoa* listaPessoa, Pessoa* pessoa){
     CelPessoa* nova = (CelPessoa*)malloc(sizeof(CelPessoa));
@@ -183,4 +183,12 @@ void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa){
     }
 
     fclose(f);
+}
+
+void imprimeListaPlaylistDaListaPessoaNoArquivo(Lista_pessoa* listaPessoa){
+    CelPessoa* celPessoaAux = listaPessoa->first;
+    while(celPessoaAux != NULL){
+        imprimeListaPlaylistPessoaArquivo(celPessoaAux->pessoa);
+        celPessoaAux = celPessoaAux->next;
+    }
 }
