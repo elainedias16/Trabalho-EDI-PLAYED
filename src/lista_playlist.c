@@ -207,9 +207,10 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
 // }
 
 Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
+    //a primeira playlist refatora certo, mas da erro quando vai pras proximas
     CelPlaylist* i = listaPlaylistGenero->first;
     Lista_playlist* refatorada = criaListaPlaylist();;
-    int ehVazio;
+    int ehVazio = 0 ;
     Playlist* playlistArtistaAux;
     CelMusica* aux;
     Musica* musicaAux;
@@ -217,7 +218,8 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
     int counter = 0;
     while(i != NULL){
         counter++;
-        printf("endereco de i : [%p]\n", i);
+        i = listaPlaylistGenero->first; 
+        //printf("endereco de i : [%p]\n", i);
         aux = getFirstCelPlaylist(i->playlist);
         musicaAux = getMusicaCelMusica(aux);
         nomeArtista = get_artista_musica(musicaAux);
@@ -226,7 +228,7 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
         printf("ehVazio: %d\n", ehVazio);
         inserePlaylist(refatorada, playlistArtistaAux);
 
-        if(ehVazio == VAZIO){
+        if(ehVazio == VAZIO ){
             destroiListaPlaylist(listaPlaylistGenero);
             break;
         }
@@ -234,10 +236,11 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
         // ver a primeira musica para pegar o artista
 
 
-        i = listaPlaylistGenero->first;
-        printf("endereco de i depois de 'incrementar': [%p]\n", i);
+        //i = listaPlaylistGenero->first; //COMENTEI AQUI
+        
+        //printf("endereco de i depois de 'incrementar': [%p]\n", i);
     }
-    printf("counter [%d]\n", counter);
+    //printf("counter [%d]\n", counter);
     //destroiListaPlaylist(listaPlaylistGenero);
     return refatorada;
 }

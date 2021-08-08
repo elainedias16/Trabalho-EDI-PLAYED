@@ -147,7 +147,7 @@ int removeMusicasDeUmArtistaDaPlaylist(Playlist* playlist, char* artista){
                 
                 if(playlist->tam == 0){
                    // printf("RETORNOU VAZIO\n");
-                    destroiPlaylist(playlist);
+                   destroiPlaylist(playlist); 
                     return VAZIO;
                 }
 

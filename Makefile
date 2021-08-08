@@ -40,3 +40,4 @@ comp:
 
 run:
 	valgrind ./Entrada/tp1
+#	valgrind --leak-check=full ./Entrada/tp1

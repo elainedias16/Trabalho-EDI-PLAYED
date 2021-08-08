@@ -20,12 +20,12 @@ int main(){
     Musica* musica3 = criaMusica("nome3", "artista3");
     Musica* musica4 = criaMusica("nome4", "artista4");
     
-    Musica* musica5 = criaMusica("nome5", "artista5");
-    Musica* musica6 = criaMusica("nome6", "artista6");
+    // Musica* musica5 = criaMusica("nome5", "artista5");
+    // Musica* musica6 = criaMusica("nome6", "artista6");
     
     Playlist* playlist1 = criaPlaylist("playlist1");
     Playlist* playlist2 = criaPlaylist("playlist2");
-    Playlist* playlist3 = criaPlaylist("playlist3");
+    // Playlist* playlist3 = criaPlaylist("playlist3");
 
     insereMusica(playlist1, musica1); // playlist1
     insereMusica(playlist1, musica2);
@@ -33,17 +33,21 @@ int main(){
     insereMusica(playlist2, musica3); // playlist2
     insereMusica(playlist2, musica4);
     
-    insereMusica(playlist3, musica5); // playlist3
-    insereMusica(playlist3, musica6);
+    // insereMusica(playlist3, musica5); // playlist3
+    // insereMusica(playlist3, musica6);
     
     Lista_playlist* listaGenerica = criaListaPlaylist();
     inserePlaylist(listaGenerica, playlist1);
     inserePlaylist(listaGenerica, playlist2);
-    inserePlaylist(listaGenerica, playlist3);
-    
-    Lista_playlist* refatorada = refatoraListaPlaylist(listaGenerica);
+    // inserePlaylist(listaGenerica, playlist3);
 
-    printListaPlaylist(refatorada, stdout);
+
+    // printListaPlaylist(listaGenerica, stdout);
+    
+    //Playlist* artista1 = criaPlaylist("artista1");
+   Lista_playlist* refatorada = refatoraListaPlaylist(listaGenerica);
+
+   //printListaPlaylist(refatorada, stdout);
     //printf("PLAYLIST TODA\n");
     //printPlaylist(playlist, stdout);
 
@@ -58,7 +62,9 @@ int main(){
     //printPlaylist(playlist, stdout);
     //destroiListaPessoa(listaPessoa);
 
-    // Playlist* artista1 = criaPlaylist("artista1");
+
+    //insereMusicasArtistaEmSuaPlaylist(artista1, playlist1);
+    //insereMusicasArtistaAPartirDeListaPlaylist(artista1, listaGenerica);
     // insereMusicasArtistaAPartirDeListaPlaylist(artista1, listaGenerica);
     // printPlaylist(artista1, stdout);
     //printf("IMPRIMINDO PLAYLIST1:\n");
@@ -73,8 +79,11 @@ int main(){
     //insereMusicasArtistaEmSuaPlaylist(artista1, playlist);
     //printPlaylist(playlist, stdout);
     
-    //destroiListaPlaylist(listaGenerica);
+   //destroiListaPlaylist(listaGenerica);  //ja esta destruindo dentro da funcao quando eh vazia =0
+
     destroiListaPlaylist(refatorada);
+
+
     //destroiPlaylist(artista1);
 
 
