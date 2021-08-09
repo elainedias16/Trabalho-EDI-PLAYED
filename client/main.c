@@ -8,8 +8,8 @@
 #include "../include/lista_pessoa.h"
 
 int main(){
-    char* fileNameAmizades = "Entrada/amizade.txt";
-    char* fileNamePlaylists = "Entrada/playlists.txt";
+    char* fileNameAmizades = "data/Entrada/amizade.txt";
+    char* fileNamePlaylists = "data/Entrada/playlists.txt";
     Lista_pessoa* listaPessoa =  inicializaUsuarios(fileNameAmizades, fileNamePlaylists); 
     refatoraListaPlaylistDaListaPessoa(listaPessoa);
     geraArquivosSaida(listaPessoa);
@@ -17,9 +17,8 @@ int main(){
     return 0;
 }
 
-//makefile.
 //readme.
-// desafio.
+//makefile.
 // fazer diff depois.
 // apagar gets que nao usou.
-// criar pasta 'data' para entrada e saida.
+// desafio.

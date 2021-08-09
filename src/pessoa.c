@@ -37,7 +37,6 @@ void destroiPessoa(Pessoa* pessoa){
     free(pessoa);
 }
 
-
 Pessoa* setSongs(Pessoa* pessoa, Lista_playlist* songs){
     pessoa->songs = songs;
     return pessoa;
@@ -68,7 +67,7 @@ void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylist
             for(int i = 0; i < qtd; i++){ // Lendo uma linha do arquivo.
                 fscanf(f, "%[^;^\n]%*c", nomePlaylist);
                 
-                strcpy(pasta, "Entrada/"); // Resetando string pasta
+                strcpy(pasta, "data/Entrada/"); // Resetando string pasta
                 strcat(pasta, nomePlaylist); // Concatenando caminho do arquivo com nome do arquivo
                 strcpy(nomePlaylist, pasta); // Passando o caminho para o nome da playlist
 
@@ -95,9 +94,10 @@ void escreveListaPlaylistRefatoradaPessoaArquivo(Pessoa* pessoa, FILE* f){
 }
 
 void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa){
-    char pasta[TAM] = "Saida_testes/";
+    char pasta[TAM] = "data/Saida/";
     strcat(pasta, pessoa->nome);
     mkdir(pasta, 0777);
+    //mkdir(pasta);
     printListaPlaylist(pessoa->songs, pasta);
 }
 

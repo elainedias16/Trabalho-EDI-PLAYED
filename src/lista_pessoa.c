@@ -56,7 +56,6 @@ void destroiEncadeamentoListaPessoa(Lista_pessoa* listaPessoa){
     free(listaPessoa);
 }
 
-
 void inserePessoa(Lista_pessoa* listaPessoa, Pessoa* pessoa){
     CelPessoa* nova = (CelPessoa*)malloc(sizeof(CelPessoa));
     nova->pessoa = pessoa;
@@ -144,7 +143,7 @@ void refatoraListaPlaylistDaListaPessoa(Lista_pessoa* listaPessoa){
 }
 
 void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa){
-    FILE* f = fopen("Saida_testes/played-refatoradaTESTE.txt", "w");
+    FILE* f = fopen("data/Saida/played-refatorada.txt", "w");
     if(f == NULL){
         printf("Erro na abertura do arquivo.\n");
         exit(1);
@@ -188,13 +187,13 @@ void similaridade(Lista_pessoa* listaPessoa){
     Pessoa* pessoa1;
     Pessoa* pessoa2;
     int qtd;
-    FILE* f = fopen("Entrada/amizade.txt", "r");
+    FILE* f = fopen("data/Entrada/amizade.txt", "r");
     if(f == NULL){
         printf("Erro na abertura do arquivo.\n");
         exit(1);
     }
 
-    FILE* similaridades = fopen("Saida_testes/similaridades.txt", "w");
+    FILE* similaridades = fopen("data/Saida/similaridades.txt", "w");
     if(similaridades == NULL){
         printf("Erro na abertura do arquivo.\n");
         exit(1);

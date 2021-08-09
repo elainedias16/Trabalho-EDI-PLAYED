@@ -179,9 +179,6 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
     return refatorada;
 }
 
-
-
-
 int getTamListaPlaylist(Lista_playlist* listaPlaylist){
     return listaPlaylist->tam;
 }
@@ -189,9 +186,13 @@ int getTamListaPlaylist(Lista_playlist* listaPlaylist){
 void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f){
     CelPlaylist* celPlaylistAux = listaPlaylist->first;
     char* nomePlaylist;
+    char nomePlaylistAux[TAM];
     while(celPlaylistAux != NULL){
         nomePlaylist = get_nome_playlist(celPlaylistAux->playlist);
-        fprintf(f, "%s", nomePlaylist);
+        strcpy(nomePlaylistAux, nomePlaylist);
+        strcat(nomePlaylistAux, ".txt"); // Concatenando nome da playlist com .txt para imprimir no arquivo.
+
+        fprintf(f, "%s", nomePlaylistAux);
 
         celPlaylistAux = celPlaylistAux->next;
         
