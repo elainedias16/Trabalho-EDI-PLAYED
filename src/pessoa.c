@@ -1,10 +1,4 @@
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
-// #include "../include/lista_pessoa.h"
-// #include "../include/lista_playlist.h"
 #include "../include/pessoa.h"
-// #include <sys/stat.h>
 
 #define TAM 200
 
@@ -36,28 +30,13 @@ Pessoa* criaPessoa(char* nome){
 
 void destroiPessoa(Pessoa* pessoa){
     free(pessoa->nome);
-    destroiListaPlaylist(pessoa->songs); //! PODE DAR PROBLEMA LA NA FRENTE
+    destroiListaPlaylist(pessoa->songs);
     destroiEncadeamentoListaPessoa(pessoa->amigos);
-    //destroiListaPessoa(pessoa->amigos); //! SE DER, COLOCAR PARA DESTRUIR FORA
+    //destroiListaPessoa(pessoa->amigos); 
     //free(pessoa->amigos);
     free(pessoa);
 }
 
-// void printPessoa(Pessoa* pessoa, FILE* f){
-//     fprintf(f, "Nome: %s\n", pessoa->nome);
-//     CelPessoa* i = getFirstCelula(pessoa->amigos);
-//     Pessoa* aux;
-//     fprintf(f , "Lista de amigos\n");
-//     while(i != NULL){
-//         aux = getPessoaCelula(i);
-//         fprintf(f, "%s\n", aux->nome);
-//         i = getNextCelula(i);
-//     }
-//     fprintf(f , "Lista de playlists\n");
-//     printListaPlaylist(pessoa->songs, f);
-    
-//     fprintf(f, "---------------\n");
-// }
 
 Pessoa* setSongs(Pessoa* pessoa, Lista_playlist* songs){
     pessoa->songs = songs;
@@ -127,6 +106,3 @@ int similaridadeEntre2Amigos(Pessoa* pessoa1, Pessoa* pessoa2){
     qtd = similaridadeEntreListaPlaylist(pessoa1->songs, pessoa2->songs);
     return qtd;
 }
-
-
-//#include <sys/stat.h>

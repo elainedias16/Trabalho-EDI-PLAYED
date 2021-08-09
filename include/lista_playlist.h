@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/playlist.h"
-//#include "../include/lista_pessoa.h"
-//#include "../include/lista_playlist.h"
 
 typedef struct celPlaylist CelPlaylist;
 typedef struct lista_playlist Lista_playlist;

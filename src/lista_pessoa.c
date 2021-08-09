@@ -1,7 +1,4 @@
-// #include <stdio.h>
-// #include <stdlib.h>
 #include "../include/lista_pessoa.h"
-// #include "../include/pessoa.h"
 
 #define TAM 200
 
@@ -59,14 +56,6 @@ void destroiEncadeamentoListaPessoa(Lista_pessoa* listaPessoa){
     free(listaPessoa);
 }
 
-// void printListaPessoa(Lista_pessoa* listaPessoa, FILE *f){
-//     CelPessoa* i = listaPessoa->first;
-
-//     while(i != NULL){
-//         printPessoa(i->pessoa, f);
-//         i = i->next;
-//     }
-// }
 
 void inserePessoa(Lista_pessoa* listaPessoa, Pessoa* pessoa){
     CelPessoa* nova = (CelPessoa*)malloc(sizeof(CelPessoa));
@@ -229,4 +218,10 @@ void similaridade(Lista_pessoa* listaPessoa){
     }
     fclose(f);
     fclose(similaridades);
+}
+
+void geraArquivosSaida(Lista_pessoa* listaPessoa){
+    escrevePlaylistsRefatoradasArquivo(listaPessoa);
+    imprimeListaPlaylistDaListaPessoaNoArquivo(listaPessoa);
+    similaridade(listaPessoa);
 }

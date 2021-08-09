@@ -6,7 +6,6 @@
 #include <string.h>
 #include <sys/stat.h>
 #include "../include/lista_playlist.h"
-//#include "../include/pessoa.h"
 
 typedef struct pessoa Pessoa;
 #include "../include/lista_pessoa.h"
@@ -83,6 +82,5 @@ void refatoraListaPlaylistPessoa(Pessoa* pessoa);
 void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa);
 
 int similaridadeEntre2Amigos(Pessoa* pessoa1, Pessoa* pessoa2);
-
 
 #endif /*PESSOA_H*/

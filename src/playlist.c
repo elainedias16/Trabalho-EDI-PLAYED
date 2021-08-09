@@ -1,6 +1,3 @@
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include "../include/musica.h"
 #include "../include/playlist.h"
 
 #define TAM 200
@@ -54,7 +51,7 @@ void destroiPlaylist(Playlist* playlist){
     while(i != NULL){
         aux = i;
         i = i->next;
-        destroiMusica(aux->musica); //! TALVEZ DE PROBLEMA
+        destroiMusica(aux->musica); 
         free(aux);
     }
     free(playlist->nome);
@@ -90,7 +87,7 @@ Playlist* lePlaylist(char* fileName){
             break;
         }
     }
-    //z-input/entrada/acoustic.txt
+  
     
     fclose(f);
     return playlist;
@@ -122,10 +119,7 @@ int removeMusicasDeUmArtistaDaPlaylist(Playlist* playlist, char* artista){
             if(celMusAux != NULL){ //encontramos a celMusAux que tem o artista que buscamos
                 if(celMusAux == playlist->first && celMusAux == playlist->last){ //só tem uma musica na lista
                     playlist->first = playlist->last = NULL;
-                    //free(playlist);
-                    //destroiPlaylist(playlist);
-                    //return VAZIO;
-                    //break;
+                  
                 }
                 else if(celMusAux == playlist->first){// a musica a ser retirada eh a primeira da playlist
                     playlist->first = celMusAux->next;
@@ -190,4 +184,3 @@ int similaridadeEntrePlaylists(Playlist* p1, Playlist* p2){
     }
     return qtd;
 }
-

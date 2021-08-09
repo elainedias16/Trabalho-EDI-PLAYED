@@ -1,6 +1,3 @@
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include "../include/playlist.h"
 #include "../include/lista_playlist.h"
 #include "string.h"
 
@@ -115,7 +112,6 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
         ehVazia = insereMusicasArtistaEmSuaPlaylist(playlistArtista, i->playlist);
         
         if(ehVazia == VAZIO){ //se a playlist for vazia, precisamos retirar ela da lista
-            //destroiPlaylist(i->playlist);
             if(listaPlaylistGenero->first == i && listaPlaylistGenero->last == i){ // removendo a unica playlist da lista
                 listaPlaylistGenero->first = listaPlaylistGenero->last = NULL;
             
@@ -140,14 +136,11 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
                 i = listaPlaylistGenero->first;
             }
             
-            //if(listaPlaylistGenero->tam != 0){
+            
             free(aux); //free na celula da playlist
-            //}
+            
 
             if(listaPlaylistGenero->tam == 0){
-                //printf("CHEGOU AQUI\n");
-                //destroiPlaylist(i->playlist);
-                //destroiListaPlaylist(listaPlaylistGenero);
                 return VAZIO;
             }
             continue;
@@ -159,7 +152,6 @@ int insereMusicasArtistaAPartirDeListaPlaylist(Playlist* playlistArtista, Lista_
 }
 
 Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
-    //a primeira playlist refatora certo, mas da erro quando vai pras proximas
     CelPlaylist* i = listaPlaylistGenero->first;
     Lista_playlist* refatorada = criaListaPlaylist();;
     int ehVazio = 0 ;
@@ -170,7 +162,6 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
 
     while(i != NULL){
         i = listaPlaylistGenero->first; 
-        //printf("endereco de i : [%p]\n", i);
         aux = getFirstCelPlaylist(i->playlist);
         musicaAux = getMusicaCelMusica(aux);
         nomeArtista = get_artista_musica(musicaAux);
@@ -182,21 +173,13 @@ Lista_playlist* refatoraListaPlaylist(Lista_playlist* listaPlaylistGenero){
             destroiListaPlaylist(listaPlaylistGenero);
             break;
         }
-        // entrar na primeira playlist
-        // ver a primeira musica para pegar o artista
-
-
-        //i = listaPlaylistGenero->first; //COMENTEI AQUI
         
-        //printf("endereco de i depois de 'incrementar': [%p]\n", i);
     }
-    //printf("counter [%d]\n", counter);
-    //destroiListaPlaylist(listaPlaylistGenero);
+   
     return refatorada;
 }
 
-// get first musica de uma playlist
-// get nome artista dessa musica
+
 
 
 int getTamListaPlaylist(Lista_playlist* listaPlaylist){

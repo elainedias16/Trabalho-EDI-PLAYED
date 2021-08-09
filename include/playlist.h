@@ -4,11 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/musica.h"
-//#include "../include/playlist.h"
-
 
 typedef struct celMusica CelMusica;
-
 typedef struct playlist Playlist;
 
 /**

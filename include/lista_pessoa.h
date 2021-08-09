@@ -1,10 +1,6 @@
 #ifndef LISTA_PESSOA_H_
 #define LISTA_PESSOA_H_
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include "../include/lista_pessoa.h"
-
 typedef struct celPessoa CelPessoa;
 typedef struct lista_pessoa Lista_pessoa;
 #include "../include/pessoa.h"
@@ -97,6 +93,10 @@ void refatoraListaPlaylistDaListaPessoa(Lista_pessoa* listaPessoa);
  **/
 void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa);
 
+/**
+ * @brief Imprime a lista de playlist das lista de pessoas no arquivo.
+ * @param listaPessoa Lista de pessoas do PLAYED.
+ **/
 void imprimeListaPlaylistDaListaPessoaNoArquivo(Lista_pessoa* listaPessoa);
 
 /**
@@ -104,5 +104,12 @@ void imprimeListaPlaylistDaListaPessoaNoArquivo(Lista_pessoa* listaPessoa);
  * @param listaPessoa Lista de pessoas do PLAYED.
  **/
 void similaridade(Lista_pessoa* listaPessoa);
+
+/**
+ * @brief Função que chama outras que geram os arquivos de saída, similaridade, played-refatorada e
+ * as playlists refatoradas por pesssoa.
+ * @param listaPessoa Lista de pessoas do PLAYED.
+ **/
+void geraArquivosSaida(Lista_pessoa* listaPessoa);
 
 #endif /*LISTA_PESSOA_H*/
