@@ -219,3 +219,22 @@ void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f){
         }
     }
 }
+
+int similaridadeEntreListaPlaylist(Lista_playlist* listaP1, Lista_playlist* listaP2){
+    int qtd = 0;
+    CelPlaylist* i;
+    CelPlaylist* j;
+    char* nomeListaP1;
+    char* nomeListaP2;
+
+    for(i = listaP1->first ; i != NULL; i = i->next){
+        for(j = listaP2->first; j != NULL; j = j->next){
+            nomeListaP1 = get_nome_playlist(i->playlist);
+            nomeListaP2 = get_nome_playlist(j->playlist);
+            if(strcmp(nomeListaP1, nomeListaP2) == 0){
+                qtd += similaridadeEntrePlaylists(i->playlist, j->playlist);
+            }
+        }
+    }
+    return qtd;
+}

@@ -96,4 +96,12 @@ int getTamListaPlaylist(Lista_playlist* listaPlaylist);
  **/
 void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f);
 
+/**
+ * @brief Calcula quantas músicas em comum possuem duas listas de playlists.
+ * @param listaP1 Lista de playlists 1.
+ * @param listaP2 Lista de playlists 2.
+ * @return Quantidade de músicas iguais em duas playlists.
+ **/
+int similaridadeEntreListaPlaylist(Lista_playlist* listaP1, Lista_playlist* listaP2);
+
 #endif /*LISTA_DE_PLAYLIST_*/

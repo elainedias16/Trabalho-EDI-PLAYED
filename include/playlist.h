@@ -90,4 +90,12 @@ int removeMusicasDeUmArtistaDaPlaylist(Playlist* playlist, char* artista);
  **/
 int insereMusicasArtistaEmSuaPlaylist(Playlist* playlistArtista, Playlist* playlistGenero);
 
+/**
+ * @brief Calcula quantas músicas em comum possuem duas playlists.
+ * @param p1 Playlist 1.
+ * @param p2 Playlist 2.
+ * @return Quantidade de músicas iguais entre as playlists.
+ **/
+int similaridadeEntrePlaylists(Playlist* p1, Playlist* p2);
+
 #endif /*PLAYLIST*/

@@ -8,6 +8,7 @@
 #include "../include/lista_pessoa.h"
 
 int main(){
+
     char* fileNameAmizades = "Entrada/amizade.txt";
     char* fileNamePlaylists = "Entrada/playlists.txt";
     
@@ -17,20 +18,19 @@ int main(){
     refatoraListaPlaylistDaListaPessoa(listaPessoa);
     escrevePlaylistsRefatoradasArquivo(listaPessoa);
     imprimeListaPlaylistDaListaPessoaNoArquivo(listaPessoa);
+    similaridade(listaPessoa);
+
     destroiListaPessoa(listaPessoa);
     return 0;
-    
 }
 
-//TODO FIZEMOS ATÉ O PONTO:
-//TODO VARREMOS UMA LISTA DE PLAYLISTS PROCURANDO AS MUSICAS DE UM ARTISTA ESPECÍFICO E AS 
-//TODO INSERIMOS NA PLAYLIST DESSE MESMO ARTISTA. [OK]
+//TODO SIMILARIDADES
 
-//TODO PROXIMO PASSO:
-//TODO FAZER ISSO PARA TODOS OS ARTISTAS. [OK]
+//TODO IDEIA: PERCORRER O ARQUIVO AMIZADES.TXT E PEGAR OS PARES DE AMIGOS. 
+//TODO PEGO OS PARES, FAZER SIMILARIDADE ENTRE AMBOS.
 
-//TODO DEPOIS:
-//TODO FAZER ISSO PARA UMA DETERMINADA PESSOA DO PLAYED. [OK]
-
-//TODO DEPOIS DEPOIS:
-//TODO FAZER ISSO PARA TODAS AS PESSOAS DO PLAYED. [OK]
+//funcoes:
+// - similaridade VERIFICA SIMILARIDADE ENTRE DUAS PESSOAS
+//le o arquivo , pega (busca) as duas pessoas na lista de pessoas que encontramos no arquivo e calculada 
+//a similaridade.   funcao grandona: similaridade . Funcao pequeninnha: calcula similaridade
+//

@@ -99,4 +99,10 @@ void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa);
 
 void imprimeListaPlaylistDaListaPessoaNoArquivo(Lista_pessoa* listaPessoa);
 
+/**
+ * @brief Calcula as similaridades entre os amigos de uma lista de pessoas e as imprime num arquivo.
+ * @param listaPessoa Lista de pessoas do PLAYED.
+ **/
+void similaridade(Lista_pessoa* listaPessoa);
+
 #endif /*LISTA_PESSOA_H*/

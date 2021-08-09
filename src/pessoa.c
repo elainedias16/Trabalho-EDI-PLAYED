@@ -122,5 +122,11 @@ void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa){
     printListaPlaylist(pessoa->songs, pasta);
 }
 
+int similaridadeEntre2Amigos(Pessoa* pessoa1, Pessoa* pessoa2){
+    int qtd = 0;
+    qtd = similaridadeEntreListaPlaylist(pessoa1->songs, pessoa2->songs);
+    return qtd;
+}
+
 
 //#include <sys/stat.h>

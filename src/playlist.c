@@ -169,7 +169,25 @@ int insereMusicasArtistaEmSuaPlaylist(Playlist* playlistArtista, Playlist* playl
         }
         
         i = i->next;
-      
     }
     return removeMusicasDeUmArtistaDaPlaylist(playlistGenero, playlistArtista->nome);
 }
+
+int similaridadeEntrePlaylists(Playlist* p1, Playlist* p2){
+    CelMusica* i;
+    CelMusica* j;
+    char* nomeMusica1;
+    char* nomeMusica2;
+    int qtd=0;
+    for(i = p1->first; i != NULL; i = i->next){
+        for(j = p2->first; j != NULL ; j= j->next){
+            nomeMusica1 = get_nome_musica(i->musica);
+            nomeMusica2 = get_nome_musica(j->musica);
+            if(strcmp(nomeMusica1, nomeMusica2) == 0){
+                qtd++;
+            }
+        }
+    }
+    return qtd;
+}
+

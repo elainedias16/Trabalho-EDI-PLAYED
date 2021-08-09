@@ -82,5 +82,7 @@ void refatoraListaPlaylistPessoa(Pessoa* pessoa);
 
 void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa);
 
+int similaridadeEntre2Amigos(Pessoa* pessoa1, Pessoa* pessoa2);
+
 
 #endif /*PESSOA_H*/
