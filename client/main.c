@@ -20,5 +20,4 @@ int main(){
 //readme.
 //makefile.
 // fazer diff depois.
-// apagar gets que nao usou.
 // desafio.

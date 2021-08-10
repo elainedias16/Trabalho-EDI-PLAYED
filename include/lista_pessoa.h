@@ -112,4 +112,12 @@ void similaridade(Lista_pessoa* listaPessoa);
  **/
 void geraArquivosSaida(Lista_pessoa* listaPessoa);
 
+void setSimilaridade(CelPessoa* celPessoa, int similaridade);
+
+int getSimilaridade(CelPessoa* celPessoa);
+
+CelPessoa* buscaCelPessoa(Lista_pessoa* listaPessoa, char* nomePessoa);
+
+//void similaridadePessoaComAmigos(Pessoa* pessoa, FILE* f, int aux);
+
 #endif /*LISTA_PESSOA_H*/

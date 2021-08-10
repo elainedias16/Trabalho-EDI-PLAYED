@@ -83,4 +83,6 @@ void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa);
 
 int similaridadeEntre2Amigos(Pessoa* pessoa1, Pessoa* pessoa2);
 
+void similaridadePessoaComAmigos(Pessoa* pessoa, FILE* f , int aux);
+
 #endif /*PESSOA_H*/

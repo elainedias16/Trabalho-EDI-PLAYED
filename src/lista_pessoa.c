@@ -5,6 +5,7 @@
 struct celPessoa{
     Pessoa* pessoa;
     CelPessoa* next;
+    int similaridade;
 };
 
 struct lista_pessoa{
@@ -60,7 +61,8 @@ void inserePessoa(Lista_pessoa* listaPessoa, Pessoa* pessoa){
     CelPessoa* nova = (CelPessoa*)malloc(sizeof(CelPessoa));
     nova->pessoa = pessoa;
     nova->next = NULL;
-    
+    nova->similaridade = -1;
+
     if(listaPessoa->tam != 0){
         listaPessoa->last->next = nova;
     }
@@ -181,46 +183,84 @@ void imprimeListaPlaylistDaListaPessoaNoArquivo(Lista_pessoa* listaPessoa){
     }
 }
 
-void similaridade(Lista_pessoa* listaPessoa){
-    char nomePessoa1[TAM];
-    char nomePessoa2[TAM];
-    Pessoa* pessoa1;
-    Pessoa* pessoa2;
-    int qtd;
-    FILE* f = fopen("data/Entrada/amizade.txt", "r");
-    if(f == NULL){
-        printf("Erro na abertura do arquivo.\n");
-        exit(1);
-    }
+// void similaridade(Lista_pessoa* listaPessoa){
+//     char nomePessoa1[TAM];
+//     char nomePessoa2[TAM];
+//     Pessoa* pessoa1;
+//     Pessoa* pessoa2;
+//     int qtd;
+//     FILE* f = fopen("data/Entrada/amizade.txt", "r");
+//     if(f == NULL){
+//         printf("Erro na abertura do arquivo.\n");
+//         exit(1);
+//     }
 
-    FILE* similaridades = fopen("data/Saida/similaridades.txt", "w");
-    if(similaridades == NULL){
-        printf("Erro na abertura do arquivo.\n");
-        exit(1);
-    }
+//     FILE* similaridades = fopen("data/Saida/similaridades.txt", "w");
+//     if(similaridades == NULL){
+//         printf("Erro na abertura do arquivo.\n");
+//         exit(1);
+//     }
 
-    fscanf(f, "%*[^\n]\n"); // Ignorando a primeira linha do arquivo.
-    while(!feof(f)){
-        fscanf(f, "%[^;];%[^\n]\n", nomePessoa1, nomePessoa2); // Capturando os pares de amigos.
-        pessoa1 = buscaPessoaNaLista(listaPessoa, nomePessoa1);
-        pessoa2 = buscaPessoaNaLista(listaPessoa, nomePessoa2);
+//     fscanf(f, "%*[^\n]\n"); // Ignorando a primeira linha do arquivo.
+//     while(!feof(f)){
+//         fscanf(f, "%[^;];%[^\n]\n", nomePessoa1, nomePessoa2); // Capturando os pares de amigos.
+//         pessoa1 = buscaPessoaNaLista(listaPessoa, nomePessoa1);
+//         pessoa2 = buscaPessoaNaLista(listaPessoa, nomePessoa2);
         
-        qtd = similaridadeEntre2Amigos(pessoa1, pessoa2);
+//         qtd = similaridadeEntre2Amigos(pessoa1, pessoa2);
         
-        //imprimindo no arquivo
-        fprintf(similaridades, "%s;%s;%d",nomePessoa1, nomePessoa2, qtd);
-        if(feof(f)){
-            break;
-        } else{
-            fprintf(similaridades, "\n");
-        }
-    }
-    fclose(f);
-    fclose(similaridades);
-}
+//         //imprimindo no arquivo
+//         fprintf(similaridades, "%s;%s;%d",nomePessoa1, nomePessoa2, qtd);
+//         if(feof(f)){
+//             break;
+//         } else{
+//             fprintf(similaridades, "\n");
+//         }
+//     }
+//     fclose(f);
+//     fclose(similaridades);
+// }
 
 void geraArquivosSaida(Lista_pessoa* listaPessoa){
     escrevePlaylistsRefatoradasArquivo(listaPessoa);
     imprimeListaPlaylistDaListaPessoaNoArquivo(listaPessoa);
     similaridade(listaPessoa);
+}
+
+void similaridade(Lista_pessoa* listaPessoa){
+    CelPessoa* i;
+    int aux = 0;
+    FILE* f = fopen("data/Saida/similaridades.txt", "w");
+    if(f == NULL){
+        printf("Erro na abertura do arquivo.\n");
+        exit(1);
+    }
+
+    for(i = listaPessoa->first; i != NULL; i = i->next){
+        similaridadePessoaComAmigos(i->pessoa, f, aux);
+        aux++;// aux passa a mensagem para a função se a pessoa que ela está analisando é a primeira ou não do laço.
+        // aux == 0 representa primeiro laço, aux != 0 representa que não está no primeiro laço.
+    }   
+    fclose(f);
+}
+
+void setSimilaridade(CelPessoa* celPessoa, int similaridade){
+    celPessoa->similaridade = similaridade;
+}
+
+int getSimilaridade(CelPessoa* celPessoa){
+    return celPessoa->similaridade;
+}
+
+CelPessoa* buscaCelPessoa(Lista_pessoa* listaPessoa, char* nomePessoa){
+    CelPessoa* i = listaPessoa->first;
+    char* nomePessoaAux;
+    while(i != NULL){
+        nomePessoaAux = get_nome_pessoa(i->pessoa);
+        if(strcmp(nomePessoa, nomePessoaAux) == 0){
+            return i;
+        }
+        i = i->next;
+    }
+    return NULL;
 }

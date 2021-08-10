@@ -106,3 +106,43 @@ int similaridadeEntre2Amigos(Pessoa* pessoa1, Pessoa* pessoa2){
     qtd = similaridadeEntreListaPlaylist(pessoa1->songs, pessoa2->songs);
     return qtd;
 }
+
+void similaridadePessoaComAmigos(Pessoa* pessoa, FILE* f , int aux){
+    CelPessoa* i = getFirstCelula(pessoa->amigos);
+    CelPessoa* j;
+    Pessoa* pessoaAux;
+    int qtd, similaridade, qtdAmigos;
+    Lista_pessoa* amigosPessoaAux;
+    while(i != NULL){
+        similaridade = getSimilaridade(i);
+        if(similaridade == -1){
+            pessoaAux = getPessoaCelula(i);
+            
+            qtd = similaridadeEntre2Amigos(pessoa, pessoaAux);
+            setSimilaridade(i, qtd);
+            // setar essa mesma similaridade no caso inverso (maria, joao) (joao maria)
+            amigosPessoaAux = get_lista_amigos_pessoa(pessoaAux);
+            j = buscaCelPessoa(amigosPessoaAux, pessoa->nome);
+            setSimilaridade(j, qtd); // entrando na lista de amigos de pessoaAux, buscar pela  pessoa e setar a similaridade nessa celula.
+            if(aux != 0){
+                fprintf(f, "\n");
+            }
+            aux = 1;
+            fprintf(f, "%s;%s;%d", pessoa->nome, pessoaAux->nome, qtd);  
+            // if(i->next != NULL){
+            //     fprintf(f, "\n");
+            // }
+            // else{
+            //    fprintf(f, "\b");
+            // }
+            // if(getNextCelula(i) != NULL){
+            //     fprintf(f, "\n");
+            // }  
+            // if( i != NULL){
+            //     fprintf(f, "\n");
+            // }      
+        }
+        i = getNextCelula(i);
+        
+    }
+}
