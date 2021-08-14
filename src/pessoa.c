@@ -128,21 +128,8 @@ void similaridadePessoaComAmigos(Pessoa* pessoa, FILE* f , int aux){
                 fprintf(f, "\n");
             }
             aux = 1;
-            fprintf(f, "%s;%s;%d", pessoa->nome, pessoaAux->nome, qtd);  
-            // if(i->next != NULL){
-            //     fprintf(f, "\n");
-            // }
-            // else{
-            //    fprintf(f, "\b");
-            // }
-            // if(getNextCelula(i) != NULL){
-            //     fprintf(f, "\n");
-            // }  
-            // if( i != NULL){
-            //     fprintf(f, "\n");
-            // }      
+            fprintf(f, "%s;%s;%d", pessoa->nome, pessoaAux->nome, qtd);     
         }
         i = getNextCelula(i);
-        
     }
 }

@@ -35,9 +35,5 @@ clean:
 	-rm -f *.o
 	-rm -f $(TARGET)
 
-comp:
-	gcc src/*.c client/*.c -o tp1
-
 run:
-	valgrind ./tp1
-#	valgrind --leak-check = full ./Entrada/tp1
+	valgrind ./$(TARGET)

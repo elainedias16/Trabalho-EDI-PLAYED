@@ -17,7 +17,6 @@ int main(){
     return 0;
 }
 
-//readme.
-//makefile.
+// readme.
 // fazer diff depois.
 // desafio.

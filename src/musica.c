@@ -15,7 +15,6 @@ char* get_artista_musica(Musica* musica){
     return musica->artista;
 }
 
-
 Musica* criaMusica(char* nome, char* artista){
     Musica* musica = (Musica*) malloc(sizeof(Musica));
     musica->nome = strdup(nome);
