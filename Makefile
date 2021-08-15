@@ -30,10 +30,13 @@ $(CLIENT).o: $(CLI)
 $(TARGET): $(OBJECTS)
 	$(CC) $(INCLUDE_PATHS) $(OBJECTS) $(LIBS) -o $@
 
-clean:
+clean: # Remove pasta com os arquivos objeto.
 	-rm -f -r obj
 	-rm -f *.o
 	-rm -f $(TARGET)
 
-run:
+run: # Executa o programa com valgrind.
 	valgrind ./$(TARGET)
+
+reset: # Remove todo o conteúdo da pasta.
+	-rm -f -r data/Saida/*
