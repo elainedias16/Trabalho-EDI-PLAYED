@@ -170,6 +170,7 @@ void escrevePlaylistsRefatoradasArquivo(Lista_pessoa* listaPessoa){
         if(celPessoa != NULL){
             fprintf(f, "\n");
         }
+        //fprintf(f,"\n");
     }
 
     fclose(f);
@@ -182,44 +183,6 @@ void imprimeListaPlaylistDaListaPessoaNoArquivo(Lista_pessoa* listaPessoa){
         celPessoaAux = celPessoaAux->next;
     }
 }
-
-// void similaridade(Lista_pessoa* listaPessoa){
-//     char nomePessoa1[TAM];
-//     char nomePessoa2[TAM];
-//     Pessoa* pessoa1;
-//     Pessoa* pessoa2;
-//     int qtd;
-//     FILE* f = fopen("data/Entrada/amizade.txt", "r");
-//     if(f == NULL){
-//         printf("Erro na abertura do arquivo.\n");
-//         exit(1);
-//     }
-
-//     FILE* similaridades = fopen("data/Saida/similaridades.txt", "w");
-//     if(similaridades == NULL){
-//         printf("Erro na abertura do arquivo.\n");
-//         exit(1);
-//     }
-
-//     fscanf(f, "%*[^\n]\n"); // Ignorando a primeira linha do arquivo.
-//     while(!feof(f)){
-//         fscanf(f, "%[^;];%[^\n]\n", nomePessoa1, nomePessoa2); // Capturando os pares de amigos.
-//         pessoa1 = buscaPessoaNaLista(listaPessoa, nomePessoa1);
-//         pessoa2 = buscaPessoaNaLista(listaPessoa, nomePessoa2);
-        
-//         qtd = similaridadeEntre2Amigos(pessoa1, pessoa2);
-        
-//         //imprimindo no arquivo
-//         fprintf(similaridades, "%s;%s;%d",nomePessoa1, nomePessoa2, qtd);
-//         if(feof(f)){
-//             break;
-//         } else{
-//             fprintf(similaridades, "\n");
-//         }
-//     }
-//     fclose(f);
-//     fclose(similaridades);
-// }
 
 void geraArquivosSaida(Lista_pessoa* listaPessoa){
     escrevePlaylistsRefatoradasArquivo(listaPessoa);
