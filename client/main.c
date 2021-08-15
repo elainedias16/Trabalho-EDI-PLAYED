@@ -16,7 +16,3 @@ int main(){
     destroiListaPessoa(listaPessoa);
     return 0;
 }
-
-// readme.
-// fazer diff depois.
-// desafio.
