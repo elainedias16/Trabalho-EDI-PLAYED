@@ -1,3 +1,11 @@
+/**
+ * Estruturas de Dados I - Trabalho Prático I - PlayED
+ * Professora: Patricia Dockhorn Costa
+ * Dupla:
+ * Elaine Dias Pires 2020101903
+ * Filipe Gomes Arante de Souza 2020100625
+ **/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
