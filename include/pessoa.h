@@ -78,11 +78,26 @@ void inserePlaylistsNasPessoas(Lista_pessoa* listaPessoa, char* fileNamePlaylist
  **/
 void refatoraListaPlaylistPessoa(Pessoa* pessoa);
 
-
+/**
+ * @brief Cria a pasta com o nome de uma pessoa e gera arquivos com o conteúdo de cada uma de suas playlists.
+ * @param pessoa Pessoa que terá uma pasta criada.
+ **/
 void imprimeListaPlaylistPessoaArquivo(Pessoa* pessoa);
 
+/**
+ * @brief Calcula a similaridade entre 2 pessoas
+ * @param pessoa1 Pessoa usada no cálculo de similaridade.
+ * @param pessoa2 Pessoa usada no cálculo de similaridade.
+ * @return Retorna o valor de similaridade calculado.
+ **/
 int similaridadeEntre2Amigos(Pessoa* pessoa1, Pessoa* pessoa2);
 
+/**
+ * @brief Realiza o cálculo da similaridade de uma pessoa com sua lista de amigos e imprime em um arquivo.
+ * @param pessoa Pessoa usada no cálculo de similaridade.
+ * @param f Ponteiro para arquivo onde iremos fazer a impressão.
+ * @param aux Variável auxiliar para formatação na impressão do arquivo.
+ **/
 void similaridadePessoaComAmigos(Pessoa* pessoa, FILE* f , int aux);
 
 #endif /*PESSOA_H*/

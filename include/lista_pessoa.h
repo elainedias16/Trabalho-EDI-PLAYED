@@ -112,12 +112,26 @@ void similaridade(Lista_pessoa* listaPessoa);
  **/
 void geraArquivosSaida(Lista_pessoa* listaPessoa);
 
+/**
+ * @brief Função que coloca um valor de similaridade em uma célula.
+ * @param celPessoa Célula que terá seu campo similaridade atualizado.
+ * @param similaridade É o valor de similaridade a ser colocado na célula.
+ **/
 void setSimilaridade(CelPessoa* celPessoa, int similaridade);
 
+/**
+ * @brief Captura a similaridade de uma célula. Se o valor encontrado for -1, é porque ainda não foi setado nenhum valor.
+ * @param celPessoa Celula de pessoa que tera a sua similaridade capturada.
+ * @return Similaridade da célula de uma pessoa.
+ **/
 int getSimilaridade(CelPessoa* celPessoa);
 
+/**
+ * @brief Busca uma célula de uma lista de pessoas de uma pessoa específica.
+ * @param listaPessoa Lista de pessoas que será percorrida.
+ * @param nomePessoa Chave de busca, que é o nome da pessoa.
+ * @return Ponteiro para célula que contém a pessoa que satisfaz a chave.
+ **/
 CelPessoa* buscaCelPessoa(Lista_pessoa* listaPessoa, char* nomePessoa);
-
-//void similaridadePessoaComAmigos(Pessoa* pessoa, FILE* f, int aux);
 
 #endif /*LISTA_PESSOA_H*/

@@ -197,7 +197,7 @@ void escreveListaPlaylistArquivo(Lista_playlist* listaPlaylist, FILE* f){
         celPlaylistAux = celPlaylistAux->next;
         
         if(celPlaylistAux == NULL){
-            break; //fprintf(f, "\n");
+            break; 
         } else{
             fprintf(f, ";");
         }
